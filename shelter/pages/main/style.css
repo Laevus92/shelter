@@ -2,7 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 html body {
-  width: 100vw;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -57,9 +56,11 @@ html body header .header-inside nav .nav-list .nav-item {
 html body header .header-inside nav .nav-list .nav-item .nav-link {
   text-decoration: none;
   color: #CDCDCD;
+  transition: 0.3s linear;
 }
 html body header .header-inside nav .nav-list .nav-item .nav-link:hover {
   color: #FAFAFA;
+  transition: 0.3s linear;
 }
 html body header .header-inside nav .nav-list .nav-item:active::after {
   content: "";
@@ -143,9 +144,11 @@ html body #not-only .wrapper-content .wrapper-content__info .redirect {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s linear;
 }
 html body #not-only .wrapper-content .wrapper-content__info .redirect:hover {
   background-color: #fddcc4;
+  transition: 0.3s linear;
 }
 html body #not-only .wrapper-content img {
   width: 58.17%;
@@ -205,15 +208,24 @@ html body #our-friends .wrapper .slider .slider__next {
   height: 52px;
   border-radius: 100px;
   border: 2px solid #F1CDB3;
-  position: relative;
-  top: 15px;
   background-color: transparent;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .slider .slider__previous:hover,
 html body #our-friends .wrapper .slider .slider__next:hover {
   background-color: #fddcc4;
-  border: none;
+  border: transparent;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .slider .slider-item {
   display: flex;
@@ -221,6 +233,7 @@ html body #our-friends .wrapper .slider .slider-item {
   align-items: center;
   background-color: #FAFAFA;
   border-radius: 9px;
+  cursor: pointer;
 }
 html body #our-friends .wrapper .slider .slider-item .name {
   margin: 23px 0 33px 0;
@@ -245,13 +258,19 @@ html body #our-friends .wrapper .slider .slider-item .learn-more {
   background-color: transparent;
   cursor: pointer;
   margin-bottom: 30px;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .slider .slider-item .learn-more:hover {
   background-color: #fddcc4;
-  border: none;
+  border: transparent;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
   margin: 0 36px;
+}
+html body #our-friends .wrapper .slider .slider-item:hover {
+  background-color: #fff;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .redirect {
   width: 261px;
@@ -270,9 +289,11 @@ html body #our-friends .wrapper .redirect {
   align-items: center;
   justify-content: center;
   color: #292929;
+  transition: 0.3s linear;
 }
 html body #our-friends .wrapper .redirect:hover {
   background-color: #fddcc4;
+  transition: 0.3s linear;
 }
 html body #help {
   width: 100%;
@@ -318,7 +339,7 @@ html body #in-addition .wrapper-content {
 }
 html body #in-addition .wrapper-content .wrapper-content__info {
   width: 31.67%;
-  margin: 80px 0 101px 32px;
+  margin: 80px 0 99px 32px;
 }
 html body #in-addition .wrapper-content .wrapper-content__info h2 {
   margin-bottom: 20px;
@@ -399,6 +420,7 @@ html body footer .wrapper .contacts {
   display: flex;
   align-items: center;
   margin: 40px 0;
+  transition: 0.3s linear;
 }
 html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
   display: flex;
@@ -413,6 +435,10 @@ html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
 }
 html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
   margin-right: 20px;
+}
+html body footer .wrapper .contacts:hover {
+  transform: scale(1.2);
+  transition: 0.3s linear;
 }
 html body footer .wrapper .footer__image {
   margin-top: 39px;
