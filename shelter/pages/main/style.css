@@ -5,6 +5,7 @@ html body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background: url(/shelter/assets/images/noise_transparent.svg), radial-gradient(100% 900% at 0% 0%, #5b483a 0%, #262425 100%), linear-gradient(0deg, #211f20, #211f20);
 }
 html body * {
   box-sizing: border-box;
@@ -13,9 +14,6 @@ html body * {
 }
 html body header {
   width: 100%;
-  background-image: url(/shelter/assets/images/start-screen-background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 html body header .header-inside {
   padding-top: 30px;
@@ -94,11 +92,7 @@ html body header .header-inside .header-inside__logo .logo_subtitle {
 }
 html body #not-only {
   width: 100%;
-  background-image: url(/shelter/assets/images/start-screen-background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
-  bottom: 2px;
 }
 html body #not-only .wrapper-content {
   display: flex;
@@ -110,7 +104,7 @@ html body #not-only .wrapper-content .wrapper-content__info {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  top: 255px;
+  top: 254px;
 }
 html body #not-only .wrapper-content .wrapper-content__info h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -152,21 +146,21 @@ html body #not-only .wrapper-content .wrapper-content__info .redirect:hover {
 }
 html body #not-only .wrapper-content img {
   width: 58.17%;
-  margin-top: 92px;
+  margin-top: 90px;
 }
 html body #about {
   width: 100%;
   position: relative;
-  bottom: 2px;
+  background-color: #fff;
 }
 html body #about .wrapper-content {
   display: flex;
   justify-content: center;
-  margin-bottom: 98px;
+  padding-bottom: 102px;
 }
 html body #about .wrapper-content .wrapper-content__info {
   width: 35.83%;
-  height: 380px;
+  height: 379px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -193,13 +187,13 @@ html body #our-friends .wrapper {
 }
 html body #our-friends .wrapper h2 {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 79px;
 }
 html body #our-friends .wrapper .slider {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 60px 0;
+  margin: 58px 0 60px 0;
   align-items: center;
 }
 html body #our-friends .wrapper .slider .slider__previous,
@@ -236,7 +230,7 @@ html body #our-friends .wrapper .slider .slider-item {
   cursor: pointer;
 }
 html body #our-friends .wrapper .slider .slider-item .name {
-  margin: 23px 0 33px 0;
+  margin: 26px 0 30px 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 20px;
@@ -283,7 +277,7 @@ html body #our-friends .wrapper .redirect {
   font-weight: 400;
   font-size: 17px;
   letter-spacing: 0.06em;
-  margin-bottom: 100px;
+  margin-bottom: 98px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -297,11 +291,12 @@ html body #our-friends .wrapper .redirect:hover {
 }
 html body #help {
   width: 100%;
-  margin-bottom: 100px;
+  padding-bottom: 44px;
+  background-color: #fff;
 }
 html body #help h2 {
   text-align: center;
-  margin: 80px 0 58px 0;
+  padding: 83px 0 3px 0;
 }
 html body #help .goods-part {
   display: flex;
@@ -339,10 +334,10 @@ html body #in-addition .wrapper-content {
 }
 html body #in-addition .wrapper-content .wrapper-content__info {
   width: 31.67%;
-  margin: 80px 0 99px 32px;
+  margin: 82px 0 100px 31px;
 }
 html body #in-addition .wrapper-content .wrapper-content__info h2 {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__title {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -383,13 +378,11 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
 }
 html body #in-addition .wrapper-content img {
   object-fit: contain;
-  margin-bottom: 20px;
+  margin-bottom: 17px;
 }
 html body footer {
   width: 100%;
-  background-image: url(/shelter/assets/images/footer-background.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url(/shelter/assets/images/noise_transparent.svg), radial-gradient(100% 900% at 0% 0%, #5b483a 0%, #262425 100%), linear-gradient(0deg, #211f20, #211f20);
 }
 html body footer .wrapper {
   display: flex;
