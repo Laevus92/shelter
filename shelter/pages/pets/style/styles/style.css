@@ -15,7 +15,7 @@ html body header {
   width: 100%;
 }
 html body header .header-inside {
-  padding: 30px 0 30px 0;
+  padding: 30px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,9 +32,14 @@ html body header .header-inside nav .nav-list {
   line-height: 24px;
   font-weight: 400;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body header .header-inside nav .nav-list {
+    font-size: 1.17vw;
+  }
+}
 html body header .header-inside nav .nav-list .nav-item__current {
   list-style-type: none;
-  color: #292929;
+  color: #545454;
   position: relative;
 }
 html body header .header-inside nav .nav-list .nav-item__current::after {
@@ -68,6 +73,11 @@ html body header .header-inside nav .nav-list .nav-item:active::after {
   left: 0;
   top: 22px;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body header .header-inside nav .nav-list .nav-item:active::after {
+    top: 1.72vw;
+  }
+}
 html body header .header-inside .header-inside__logo {
   display: flex;
   flex-direction: column;
@@ -81,6 +91,12 @@ html body header .header-inside .header-inside__logo .logo-title {
   letter-spacing: 0.06em;
   margin-bottom: 5px;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body header .header-inside .header-inside__logo .logo-title {
+    font-size: 2.5vw;
+    line-height: 2.73vw;
+  }
+}
 html body header .header-inside .header-inside__logo .logo_subtitle {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
@@ -88,6 +104,12 @@ html body header .header-inside .header-inside__logo .logo_subtitle {
   letter-spacing: 0.1em;
   margin-top: 5px;
   color: #292929;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body header .header-inside .header-inside__logo .logo_subtitle {
+    font-size: 1.02vw;
+    line-height: 1.17vw;
+  }
 }
 html body main {
   height: 100%;
@@ -114,14 +136,26 @@ html body main #our-friends .wrapper .pets-list .pets-list__item {
   cursor: pointer;
   transition: 0.3s linear;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body main #our-friends .wrapper .pets-list .pets-list__item img {
+    width: 21.094vw;
+  }
+}
 html body main #our-friends .wrapper .pets-list .pets-list__item .name {
-  margin: 24px 0 31px 0;
+  margin: 25px 0 31px 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 0.06em;
   color: #545454;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body main #our-friends .wrapper .pets-list .pets-list__item .name {
+    font-size: 1.563vw;
+    line-height: 1.563vw;
+    margin: 1.953vw 0 2.422vw 0;
+  }
 }
 html body main #our-friends .wrapper .pets-list .pets-list__item .learn-more {
   width: 187px;
@@ -138,6 +172,14 @@ html body main #our-friends .wrapper .pets-list .pets-list__item .learn-more {
   cursor: pointer;
   margin-bottom: 30px;
   transition: 0.3s linear;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body main #our-friends .wrapper .pets-list .pets-list__item .learn-more {
+    width: 14.609vw;
+    height: 4.063vw;
+    border-radius: 7.813vw;
+    font-size: 1.328vw;
+  }
 }
 html body main #our-friends .wrapper .pets-list .pets-list__item .learn-more:hover {
   background-color: #fddcc4;
@@ -158,6 +200,11 @@ html body main #our-friends .wrapper .nav-panel {
   width: 28.33%;
   justify-content: space-between;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body main #our-friends .wrapper .nav-panel {
+    margin-bottom: 7.813vw;
+  }
+}
 html body main #our-friends .wrapper .nav-panel .nav-panel__buttons {
   width: 52px;
   height: 52px;
@@ -175,6 +222,15 @@ html body main #our-friends .wrapper .nav-panel .nav-panel__buttons {
   align-items: center;
   justify-content: center;
   transition: 0.3s linear;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body main #our-friends .wrapper .nav-panel .nav-panel__buttons {
+    width: 4.063vw;
+    height: 4.063vw;
+    border-radius: 7.813vw;
+    font-size: 1.563vw;
+    line-height: 1.797vw;
+  }
 }
 html body main #our-friends .wrapper .nav-panel .nav-panel__buttons:nth-child(1),
 html body main #our-friends .wrapper .nav-panel .nav-panel__buttons:nth-child(2) {
@@ -194,7 +250,7 @@ html body main #our-friends .wrapper .nav-panel .nav-panel__buttons:nth-child(5)
 }
 html body footer {
   width: 100%;
-  background: url(../../../../assets/images/noise_transparent.svg), radial-gradient(100% 900% at 0% 0%, #5b483a 0%, #262425 100%), linear-gradient(0deg, #211f20, #211f20);
+  background: url(../assets/images/noise_transparent.svg), radial-gradient(100% 900% at 0% 0%, #5b483a 0%, #262425 100%), linear-gradient(0deg, #211f20, #211f20);
 }
 html body footer .wrapper {
   display: flex;
@@ -203,14 +259,34 @@ html body footer .wrapper {
 html body footer .wrapper .wrapper-content:nth-child(2) {
   width: 25.17%;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) > .contacts > a > img {
+    width: 1.95vw;
+  }
+}
 html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
   margin: 57px 0 33px 0;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
+    margin: 4.45vw 0 2.58vw 0;
+  }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
   margin: 32px 0 0 0;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
+    margin: 2.5vw 0 0 0;
+  }
+}
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
   margin: 32px 0 0 0;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
+    margin: 2.5vw 0 0 0;
+  }
 }
 html body footer .wrapper .column-title {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -221,11 +297,23 @@ html body footer .wrapper .column-title {
   color: #FFF;
   margin: 56px 0 40px 0;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .column-title {
+    font-size: 2.73vw;
+    line-height: 3.52vw;
+    margin: 4.38vw 0 3.13vw 0;
+  }
+}
 html body footer .wrapper .contacts {
   display: flex;
   align-items: center;
   margin: 40px 0;
   transition: 0.3s linear;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .contacts {
+    margin: 2.5vw 0 0 0;
+  }
 }
 html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
   display: flex;
@@ -238,8 +326,20 @@ html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
   letter-spacing: 0.06em;
   color: #F1CDB3;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
+    font-size: 1.56vw;
+    line-height: 1.56vw;
+  }
+}
 html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
   margin-right: 20px;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
+    margin-right: 1.56vw;
+    width: 3.12vw;
+  }
 }
 html body footer .wrapper .contacts:hover {
   transform: scale(1.2);
@@ -248,9 +348,20 @@ html body footer .wrapper .contacts:hover {
 html body footer .wrapper .footer__image {
   margin-top: 39px;
 }
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body footer .wrapper .footer__image {
+    margin-top: 3.05vw;
+    width: 23.44vw;
+  }
+}
 html body .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body .wrapper {
+    width: 93%;
+  }
 }
 html body a {
   text-decoration: none;
@@ -263,7 +374,14 @@ html body .section-title {
   letter-spacing: 0.06em;
   color: #545454;
   text-align: center;
-  padding: 80px 0 61px 0;
+  padding: 80px 0 59px 0;
+}
+@media (max-width: 1279px) and (min-width: 769px) {
+  html body .section-title {
+    font-size: 2.734vw;
+    line-height: 3.555vw;
+    padding: 6.25vw 0 4.609vw 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

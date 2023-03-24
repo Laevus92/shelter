@@ -47,6 +47,9 @@ html {
                         font-size: 15px;
                         line-height: 24px;
                         font-weight: 400;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.17vw;                           
+                        }
                     
                         .nav-item__current {
                             list-style-type: none;
@@ -86,6 +89,10 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
+
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                top: 1.72vw;                           
+                            }
                         }
                     }
                 }
@@ -102,6 +109,11 @@ html {
                         line-height: 35.2px;
                         letter-spacing: 0.06em;
                         margin-bottom: 5px;
+
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 2.5vw;  
+                            line-height: 2.73vw;                         
+                        }
                     }
                     
                     .logo_subtitle {
@@ -111,6 +123,11 @@ html {
                         letter-spacing: 0.1em;
                         margin-top: 5px;
                         color: $white-font;
+
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.02vw;  
+                            line-height: 1.17vw;                         
+                        }
                     }
                 }
             }
@@ -132,6 +149,11 @@ html {
                     position: relative;
                     top: 254px;
 
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        height: 25.16vw;  
+                        line-height: 19.84vw;                         
+                    }
+                    
                     h1{
                         font-family: Georgia, 'Times New Roman', Times, serif;
                         font-weight: 400;
@@ -139,6 +161,11 @@ html {
                         line-height: 57.2px;
                         color: $white-font;
                         width: 61.75%;
+
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 3.44vw;
+                            line-height: 4.45vw;                        
+                        }
                     }
 
                     .subtitle {
@@ -148,6 +175,11 @@ html {
                         line-height: 24px;
                         color: $normal-color-link;
                         width: 91.64%;
+
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.17vw;  
+                            line-height: 1.88vw;                         
+                        }
                     }
 
                     .redirect {
@@ -198,16 +230,28 @@ html {
                     flex-direction: column;
                     justify-content: space-between;
                     margin: 95px 0 0 120px;
+
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        height: 29.61vw;                      
+                    }
                     .subtitle {
                         font-family: Arial, Helvetica, sans-serif;
                         font-weight: 400;
                         font-size: 15px;
                         line-height: 24px;
                         color: $color-subtitle;
+
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.17vw;  
+                            line-height: 1.95vw;                         
+                        }
                     }
                 }
                 img {
                     margin-top: 80px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        width: 23.44vw;                         
+                    }
                 }
             }
         }
@@ -222,6 +266,9 @@ html {
                 h2 {
                     text-align: center;
                     margin-top: 79px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin-top: 6.17vw;                        
+                    }
                 }
                 .slider {
                     width: 100%;
@@ -229,6 +276,9 @@ html {
                     justify-content: space-between;
                     margin: 58px 0 60px 0;
                     align-items: center;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin: 4.53vw 0 4.69vw 0;                        
+                    }
 
                     .slider__previous,
                     .slider__next {
@@ -264,6 +314,11 @@ html {
                         background-color:#FAFAFA;
                         border-radius: 9px;
                         cursor: pointer;
+                        .pets-photo{
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                width: 21.09vw;                         
+                            }
+                        }
                         .name {
                             margin: 26px 0 30px 0;
                             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -272,6 +327,10 @@ html {
                             line-height: 23px;
                             letter-spacing: 0.06em;
                             color: $color-title;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                font-size: 1.56vw;
+                                line-height: 1.8vw;                        
+                            }
                         }
                         .learn-more {
                             width: 187px;
@@ -288,6 +347,12 @@ html {
                             cursor: pointer;
                             margin-bottom: 30px;
                             transition: .3s linear;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                width: 14.61vw;
+                                height: 4.06vw;
+                                border-radius: 7.81vw;
+                                font-size: 1.33vw;                       
+                            }
                         }
 
                         .learn-more:hover {
@@ -324,6 +389,10 @@ html {
                     justify-content: center;
                     color: #292929;
                     transition: .3s linear;
+
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin-bottom: 7.81vw;                        
+                    }
                 }
 
                 .redirect:hover {
@@ -341,18 +410,28 @@ html {
             h2 {
                 text-align: center;
                 padding: 83px 0 3px 0;
+                @media (max-width: 1279px) and (min-width: 769px) {
+                    padding: 6.48vw 0 0.23vw 0;                        
+                }
             }
             .goods-part {
                 display: flex;
                 width: 85.5%;
                 justify-content: space-between;
                 margin: 55px auto;
+                @media (max-width: 1279px) and (min-width: 769px) {
+                    margin: 4.30vw auto;                        
+                }
                 .goods-for-help {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     img {
                         margin-bottom: 30px;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            margin-bottom: 2.34vw;
+                            width: 4.69vw;  
+                        }
                     }
                     p {
                         font-family: Georgia, 'Times New Roman', Times, serif;
@@ -361,6 +440,10 @@ html {
                         line-height: 23px;
                         letter-spacing: 0.06em;
                         color: $x2-dark-font;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.56vw; 
+                            line-height: 1.8vw;                       
+                        }
                     }
                 }
             }
@@ -379,9 +462,15 @@ html {
                 .wrapper-content__info {
                     width: 31.67%;
                     margin: 82px 0 100px 31px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin: 6.41vw 0 7.81vw 2.42vw;                        
+                    }
                     
                     h2 {
                         margin-bottom: 18px;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            margin-bottom: 1.41vw;                        
+                        }
                     }
                     .bank-account {
                         .bank-account__title{
@@ -392,6 +481,11 @@ html {
                             letter-spacing: 0.06em;
                             color: $color-title;
                             margin-bottom: 20px;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                margin-bottom: 1.56vw;
+                                font-size: 1.17vw;
+                                line-height: 1.17vw;                      
+                            }
                         }
                         .bank-account__card-number {
                             display: flex;
@@ -401,9 +495,18 @@ html {
                             border-radius: 9px;
                             background-color: $color-primary;
                             margin-bottom: 20px;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                width: 27.27vw;
+                                height: 3.36vw;
+                                border-radius: 0.7vw;                     
+                            }
                             
                             img {
                                 margin: 10px 15px;
+                                @media (max-width: 1279px) and (min-width: 769px) {
+                                    margin: 0.78vw 1.17vw;
+                                    width: 2.34vw;                    
+                                }
                             }
 
                             p{
@@ -413,6 +516,10 @@ html {
                                 line-height: 23px;
                                 letter-spacing: 0.06em;
                                 color: $color-title;
+                                @media (max-width: 1279px) and (min-width: 769px) {
+                                    font-size: 1.56vw;
+                                    line-height: 1.8vw;                   
+                                }
                             }
                         }
                         .bank-account__description{
@@ -421,13 +528,20 @@ html {
                             font-style: italic;
                             font-weight: 400;
                             line-height: 18px;
-                            color: #B2B2B2;                        
+                            color: #B2B2B2;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                font-size: 0.94vw;
+                                line-height: 1.41vw;                   
+                            }                       
                         }
                     }
                 }
                 img {
                     object-fit: contain;
                     margin-bottom: 17px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        width: 39.45vw;                  
+                    }
                 }
             }
         }
@@ -444,15 +558,29 @@ html {
                 justify-content: space-between;
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
+                    & > .contacts > a > img {
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            width: 1.95vw;                     
+                        }
+                    }
 
                     .column-title {
-                        margin: 57px 0 33px 0
+                        margin: 57px 0 33px 0;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            margin: 4.45vw 0 2.58vw 0;                     
+                        }
                     }
                     .contacts {
-                        margin: 32px 0 0 0
+                        margin: 32px 0 0 0;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            margin: 2.50vw 0 0 0;                  
+                        }
                     }
                     .contacts:nth-child(3){
-                        margin: 32px 0 0 0
+                        margin: 32px 0 0 0;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            margin: 2.50vw 0 0 0;                  
+                        }
                 }
                 }
                 .column-title {
@@ -463,6 +591,11 @@ html {
                     letter-spacing: 0.06em;
                     color: $white-font;
                     margin: 56px 0 40px 0;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        font-size: 2.73vw;
+                        line-height: 3.52vw;
+                        margin: 4.38vw 0 3.13vw 0                  
+                    }
                 }
 
                 .contacts {
@@ -470,6 +603,9 @@ html {
                     align-items: center;
                     margin: 40px 0;
                     transition: .3s linear;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin: 2.50vw 0 0 0;                  
+                    }
 
                     a, p {
                         display: flex;
@@ -481,9 +617,17 @@ html {
                         line-height: 23px;
                         letter-spacing: 0.06em;
                         color: $color-primary;
+                        @media (max-width: 1279px) and (min-width: 769px) {
+                            font-size: 1.56vw;
+                            line-height: 1.56vw;               
+                        }
 
                         img {
                             margin-right: 20px;
+                            @media (max-width: 1279px) and (min-width: 769px) {
+                                margin-right: 1.56vw; 
+                                width: 3.12vw;                 
+                            }
                         }
                     }
                 }
@@ -493,6 +637,10 @@ html {
                 }
                 .footer__image {
                     margin-top: 39px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin-top: 3.05vw;
+                        width: 23.44vw;                  
+                    }
                 }
             }
         }
@@ -500,6 +648,9 @@ html {
         .wrapper{
             max-width: 1200px;
             margin: 0 auto;
+            @media (max-width: 1279px) and (min-width: 769px) {
+                width: 93%;                        
+            }
         }
 
         .section-title {
@@ -509,6 +660,10 @@ html {
             line-height: 45.5px;
             letter-spacing: 0.06em;
             color: $color-title;
+            @media (max-width: 1279px) and (min-width: 769px) {
+                font-size: 2.73vw;  
+                line-height: 3.52vw;                         
+            }
         }
 
         a {
