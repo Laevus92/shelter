@@ -36,7 +36,7 @@ html {
                 nav {
                     width: 36.92%;
                     max-width: 443px;
-                    @media (width: 768px) {
+                    @media (max-width:991px) and (min-width: 768px) {
                         width: 62.69%;
                         position: relative;
                         bottom: 1.6px;                           
@@ -49,7 +49,7 @@ html {
                         font-size: 15px;
                         line-height: 24px;
                         font-weight: 400;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 1.17vw;                           
                         }
                     
@@ -67,7 +67,7 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
-                            @media (width: 768px) {
+                            @media (max-width:991px) and (min-width: 768px) {
                                 top: 24px;                          
                             }
                         }
@@ -95,7 +95,7 @@ html {
                             left: 0;
                             top: 22px;
 
-                            @media (max-width: 1279px) and (min-width: 769px) {
+                            @media (max-width: 1279px) and (min-width: 992px) {
                                 top: 1.72vw;                           
                             }
                         }
@@ -115,7 +115,7 @@ html {
                         letter-spacing: 0.06em;
                         margin-bottom: 5px;
 
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 2.5vw;  
                             line-height: 2.73vw;                         
                         }
@@ -129,7 +129,7 @@ html {
                         margin-top: 5px;
                         color: $dark-font;
 
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 1.02vw;  
                             line-height: 1.17vw;                         
                         }
@@ -154,7 +154,7 @@ html {
                         justify-content: space-between;
                         width: 100%;
                         flex-wrap: wrap;
-                        @media (width: 768px) {
+                        @media (max-width:991px) and (min-width: 768px) {
                             width: 82%;                        
                         }                        
         
@@ -167,7 +167,7 @@ html {
                             cursor: pointer;
                             transition: .3s linear;
                             margin: 0 0 30px 0;
-                            @media (width: 768px) {
+                            @media (max-width:991px) and (min-width: 768px) {
                                 &:nth-child(8),
                                 &:nth-child(7) {
                                     display: none;
@@ -176,7 +176,7 @@ html {
                             
                             
                             img {
-                                @media (max-width: 1279px) and (min-width: 769px) {
+                                @media (max-width: 1279px) and (min-width: 992px) {
                                     width: 21.094vw;                         
                                 }
                             }
@@ -189,7 +189,7 @@ html {
                                 line-height: 23px;
                                 letter-spacing: 0.06em;
                                 color: $color-title;
-                                @media (max-width: 1279px) and (min-width: 769px) {
+                                @media (max-width: 1279px) and (min-width: 992px) {
                                     font-size: 1.563vw;
                                     line-height: 1.563vw;
                                     margin: 1.953vw 0 2.422vw 0;                    
@@ -210,7 +210,7 @@ html {
                                 cursor: pointer;
                                 margin-bottom: 30px;
                                 transition: .3s linear;
-                                @media (max-width: 1279px) and (min-width: 769px) {
+                                @media (max-width: 1279px) and (min-width: 992px) {
                                     width: 14.609vw;
                                     height: 4.063vw;
                                     border-radius: 7.813vw;
@@ -240,10 +240,10 @@ html {
                         margin: 30px 0 100px 0;
                         width: 28.33%;
                         justify-content: space-between;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             margin-bottom: 7.813vw;
                         }
-                        @media (width: 768px) {
+                        @media (max-width:991px) and (min-width: 768px) {
                             width: 48.13%;
                             margin: 8px 0 78px 0;                     
                         }
@@ -266,7 +266,7 @@ html {
                             align-items: center;
                             justify-content: center;
                             transition: .3s linear;
-                            @media (max-width: 1279px) and (min-width: 769px) {
+                            @media (max-width: 1279px) and (min-width: 992px) {
                                 width: 4.063vw;
                                 height: 4.063vw;
                                 border-radius: 7.813vw;
@@ -311,7 +311,7 @@ html {
             .wrapper {
                 display: flex;
                 justify-content: space-between;
-                @media (width: 768px) {
+                @media (max-width:991px) and (min-width: 768px) {
                     display: flex;
                     justify-content: space-around;
                     flex-wrap: wrap;                  
@@ -319,11 +319,11 @@ html {
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
                     & > .contacts > a > img {
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             width: 1.95vw;                     
                         }
                     }
-                    @media (width: 768px) {
+                    @media (max-width:991px) and (min-width: 768px) {
                         width: 41.67%;
                         position: relative;
                         right: 6px;              
@@ -332,23 +332,23 @@ html {
 
                     .column-title {
                         margin: 57px 0 33px 0;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             margin: 4.45vw 0 2.58vw 0;                     
                         }
-                        @media (width: 768px) {
+                        @media (max-width:991px) and (min-width: 768px) {
                             margin: 31px 0 32px 0;                   
                         }
 
                     }
                     .contacts {
                         margin: 32px 0 0 0;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             margin: 2.50vw 0 0 0;                  
                         }
                     }
                     .contacts:nth-child(3){
                         margin: 32px 0 0 0;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             margin: 2.50vw 0 0 0;                  
                         }
                 }
@@ -361,12 +361,12 @@ html {
                     letter-spacing: 0.06em;
                     color: $white-font;
                     margin: 56px 0 40px 0;
-                    @media (max-width: 1279px) and (min-width: 769px) {
+                    @media (max-width: 1279px) and (min-width: 992px) {
                         font-size: 2.73vw;
                         line-height: 3.52vw;
                         margin: 4.38vw 0 3.13vw 0                  
                     }
-                    @media (width: 768px) {
+                    @media (max-width:991px) and (min-width: 768px) {
                         margin: 32px 0 40px 0;                   
                     }
                 }
@@ -376,10 +376,10 @@ html {
                     align-items: center;
                     margin: 40px 0;
                     transition: .3s linear;
-                    @media (max-width: 1279px) and (min-width: 769px) {
+                    @media (max-width: 1279px) and (min-width: 992px) {
                         margin: 2.50vw 0 0 0;                  
                     }
-                    @media (width: 768px) {
+                    @media (max-width:991px) and (min-width: 768px) {
                         margin: 38px 0;                   
                     }
 
@@ -393,14 +393,14 @@ html {
                         line-height: 23px;
                         letter-spacing: 0.06em;
                         color: $color-primary;
-                        @media (max-width: 1279px) and (min-width: 769px) {
+                        @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 1.56vw;
                             line-height: 1.56vw;               
                         }
 
                         img {
                             margin-right: 20px;
-                            @media (max-width: 1279px) and (min-width: 769px) {
+                            @media (max-width: 1279px) and (min-width: 992px) {
                                 margin-right: 1.56vw; 
                                 width: 3.12vw;                 
                             }
@@ -413,11 +413,11 @@ html {
                 }
                 .footer__image {
                     margin-top: 39px;
-                    @media (max-width: 1279px) and (min-width: 769px) {
+                    @media (max-width: 1279px) and (min-width: 992px) {
                         margin-top: 3.05vw;
                         width: 23.44vw;                  
                     }
-                    @media (width: 768px) {
+                    @media (max-width:991px) and (min-width: 768px) {
                         margin-top: 26px;                   
                     }
                 }
@@ -427,10 +427,10 @@ html {
         .wrapper{
             max-width: 1200px;
             margin: 0 auto;
-            @media (max-width: 1279px) and (min-width: 769px) {
+            @media (max-width: 1279px) and (min-width: 992px) {
                 width: 93%;                        
             }
-            @media (width: 768px) {
+            @media (max-width:991px) and (min-width: 768px) {
                 width: 708px;                         
             }
         }
@@ -448,12 +448,12 @@ html {
             color: $color-title;
             text-align: center;
             padding: 80px 0 59px 0;
-            @media (max-width: 1279px) and (min-width: 769px) {
+            @media (max-width: 1279px) and (min-width: 992px) {
                 font-size: 2.734vw;
                 line-height: 3.555vw;
                 padding: 6.250vw 0 4.609vw 0;                      
             }
-            @media (width: 768px) {
+            @media (max-width:991px) and (min-width: 768px) {
                 padding: 80px 0 30px 0;                          
             }
         }
