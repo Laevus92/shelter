@@ -24,6 +24,13 @@ html body header .header-inside nav {
   width: 36.92%;
   max-width: 443px;
 }
+@media (width: 768px) {
+  html body header .header-inside nav {
+    width: 62.69%;
+    position: relative;
+    bottom: 1.6px;
+  }
+}
 html body header .header-inside nav .nav-list {
   display: flex;
   justify-content: space-between;
@@ -50,6 +57,11 @@ html body header .header-inside nav .nav-list .nav-item__current::after {
   position: absolute;
   left: 0;
   top: 22px;
+}
+@media (width: 768px) {
+  html body header .header-inside nav .nav-list .nav-item__current::after {
+    top: 24px;
+  }
 }
 html body header .header-inside nav .nav-list .nav-item {
   list-style-type: none;
@@ -126,6 +138,12 @@ html body main #our-friends .wrapper .pets-list {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
+}
+@media (width: 768px) {
+  html body main #our-friends .wrapper .pets-list {
+    width: 82%;
+  }
 }
 html body main #our-friends .wrapper .pets-list .pets-list__item {
   display: flex;
@@ -135,6 +153,12 @@ html body main #our-friends .wrapper .pets-list .pets-list__item {
   border-radius: 9px;
   cursor: pointer;
   transition: 0.3s linear;
+  margin: 0 0 30px 0;
+}
+@media (width: 768px) {
+  html body main #our-friends .wrapper .pets-list .pets-list__item:nth-child(8), html body main #our-friends .wrapper .pets-list .pets-list__item:nth-child(7) {
+    display: none;
+  }
 }
 @media (max-width: 1279px) and (min-width: 769px) {
   html body main #our-friends .wrapper .pets-list .pets-list__item img {
@@ -196,13 +220,19 @@ html body main #our-friends .wrapper .pets-list:nth-child(3) {
 html body main #our-friends .wrapper .nav-panel {
   display: flex;
   flex-direction: row;
-  margin-bottom: 100px;
+  margin: 30px 0 100px 0;
   width: 28.33%;
   justify-content: space-between;
 }
 @media (max-width: 1279px) and (min-width: 769px) {
   html body main #our-friends .wrapper .nav-panel {
     margin-bottom: 7.813vw;
+  }
+}
+@media (width: 768px) {
+  html body main #our-friends .wrapper .nav-panel {
+    width: 48.13%;
+    margin: 8px 0 78px 0;
   }
 }
 html body main #our-friends .wrapper .nav-panel .nav-panel__buttons {
@@ -256,6 +286,13 @@ html body footer .wrapper {
   display: flex;
   justify-content: space-between;
 }
+@media (width: 768px) {
+  html body footer .wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
 html body footer .wrapper .wrapper-content:nth-child(2) {
   width: 25.17%;
 }
@@ -264,12 +301,24 @@ html body footer .wrapper .wrapper-content:nth-child(2) {
     width: 1.95vw;
   }
 }
+@media (width: 768px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) {
+    width: 41.67%;
+    position: relative;
+    right: 6px;
+  }
+}
 html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
   margin: 57px 0 33px 0;
 }
 @media (max-width: 1279px) and (min-width: 769px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
     margin: 4.45vw 0 2.58vw 0;
+  }
+}
+@media (width: 768px) {
+  html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
+    margin: 31px 0 32px 0;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
@@ -304,6 +353,11 @@ html body footer .wrapper .column-title {
     margin: 4.38vw 0 3.13vw 0;
   }
 }
+@media (width: 768px) {
+  html body footer .wrapper .column-title {
+    margin: 32px 0 40px 0;
+  }
+}
 html body footer .wrapper .contacts {
   display: flex;
   align-items: center;
@@ -313,6 +367,11 @@ html body footer .wrapper .contacts {
 @media (max-width: 1279px) and (min-width: 769px) {
   html body footer .wrapper .contacts {
     margin: 2.5vw 0 0 0;
+  }
+}
+@media (width: 768px) {
+  html body footer .wrapper .contacts {
+    margin: 38px 0;
   }
 }
 html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
@@ -354,6 +413,11 @@ html body footer .wrapper .footer__image {
     width: 23.44vw;
   }
 }
+@media (width: 768px) {
+  html body footer .wrapper .footer__image {
+    margin-top: 26px;
+  }
+}
 html body .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -361,6 +425,11 @@ html body .wrapper {
 @media (max-width: 1279px) and (min-width: 769px) {
   html body .wrapper {
     width: 93%;
+  }
+}
+@media (width: 768px) {
+  html body .wrapper {
+    width: 708px;
   }
 }
 html body a {
@@ -381,6 +450,11 @@ html body .section-title {
     font-size: 2.734vw;
     line-height: 3.555vw;
     padding: 6.25vw 0 4.609vw 0;
+  }
+}
+@media (width: 768px) {
+  html body .section-title {
+    padding: 80px 0 30px 0;
   }
 }
 

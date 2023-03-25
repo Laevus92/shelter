@@ -36,6 +36,11 @@ html {
                 nav {
                     width: 36.92%;
                     max-width: 443px;
+                    @media (width: 768px) {
+                        width: 62.69%;
+                        position: relative;
+                        bottom: 1.6px;                           
+                    }
 
                     .nav-list {
                         display: flex;
@@ -62,6 +67,9 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
+                            @media (width: 768px) {
+                                top: 24px;                          
+                            }
                         }
 
                         .nav-item {
@@ -145,6 +153,10 @@ html {
                         display: flex;
                         justify-content: space-between;
                         width: 100%;
+                        flex-wrap: wrap;
+                        @media (width: 768px) {
+                            width: 82%;                        
+                        }                        
         
                         .pets-list__item {
                             display: flex;
@@ -154,6 +166,14 @@ html {
                             border-radius: 9px;
                             cursor: pointer;
                             transition: .3s linear;
+                            margin: 0 0 30px 0;
+                            @media (width: 768px) {
+                                &:nth-child(8),
+                                &:nth-child(7) {
+                                    display: none;
+                                }                          
+                            }
+                            
                             
                             img {
                                 @media (max-width: 1279px) and (min-width: 769px) {
@@ -217,11 +237,15 @@ html {
                     .nav-panel {
                         display: flex;
                         flex-direction: row;
-                        margin-bottom: 100px;
+                        margin: 30px 0 100px 0;
                         width: 28.33%;
                         justify-content: space-between;
                         @media (max-width: 1279px) and (min-width: 769px) {
                             margin-bottom: 7.813vw;
+                        }
+                        @media (width: 768px) {
+                            width: 48.13%;
+                            margin: 8px 0 78px 0;                     
                         }
                         
     
@@ -249,6 +273,7 @@ html {
                                 font-size: 1.563vw;
                                 line-height: 1.797vw;
                             }
+                            
                         }
     
                         .nav-panel__buttons:nth-child(1),
@@ -286,6 +311,11 @@ html {
             .wrapper {
                 display: flex;
                 justify-content: space-between;
+                @media (width: 768px) {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;                  
+                }
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
                     & > .contacts > a > img {
@@ -293,12 +323,22 @@ html {
                             width: 1.95vw;                     
                         }
                     }
+                    @media (width: 768px) {
+                        width: 41.67%;
+                        position: relative;
+                        right: 6px;              
+                    }
+
 
                     .column-title {
                         margin: 57px 0 33px 0;
                         @media (max-width: 1279px) and (min-width: 769px) {
                             margin: 4.45vw 0 2.58vw 0;                     
                         }
+                        @media (width: 768px) {
+                            margin: 31px 0 32px 0;                   
+                        }
+
                     }
                     .contacts {
                         margin: 32px 0 0 0;
@@ -326,6 +366,9 @@ html {
                         line-height: 3.52vw;
                         margin: 4.38vw 0 3.13vw 0                  
                     }
+                    @media (width: 768px) {
+                        margin: 32px 0 40px 0;                   
+                    }
                 }
 
                 .contacts {
@@ -335,6 +378,9 @@ html {
                     transition: .3s linear;
                     @media (max-width: 1279px) and (min-width: 769px) {
                         margin: 2.50vw 0 0 0;                  
+                    }
+                    @media (width: 768px) {
+                        margin: 38px 0;                   
                     }
 
                     a, p {
@@ -371,6 +417,9 @@ html {
                         margin-top: 3.05vw;
                         width: 23.44vw;                  
                     }
+                    @media (width: 768px) {
+                        margin-top: 26px;                   
+                    }
                 }
             }
         }
@@ -380,6 +429,9 @@ html {
             margin: 0 auto;
             @media (max-width: 1279px) and (min-width: 769px) {
                 width: 93%;                        
+            }
+            @media (width: 768px) {
+                width: 708px;                         
             }
         }
 
@@ -400,6 +452,9 @@ html {
                 font-size: 2.734vw;
                 line-height: 3.555vw;
                 padding: 6.250vw 0 4.609vw 0;                      
+            }
+            @media (width: 768px) {
+                padding: 80px 0 30px 0;                          
             }
         }
    }

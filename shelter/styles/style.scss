@@ -39,6 +39,11 @@ html {
                 nav {
                     width: 36.92%;
                     max-width: 443px;
+                    @media (width: 768px) {
+                        width: 62.69%;
+                        position: relative;
+                        bottom: 1.6px;                           
+                    }
 
                     .nav-list {
                         display: flex;
@@ -65,6 +70,9 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
+                            @media (width: 768px) {
+                                top: 24px;                          
+                            }
                         }
 
                         .nav-item {
@@ -140,6 +148,10 @@ html {
             .wrapper-content {
                 display: flex;
                 justify-content: space-between;
+                @media (width: 768px) {
+                    flex-direction: column;
+                    align-items: center;                         
+                }
 
                 .wrapper-content__info {
                     height: 322px;
@@ -148,6 +160,13 @@ html {
                     justify-content: space-between;
                     position: relative;
                     top: 254px;
+                    @media (width: 768px) {
+                        top: 0;
+                        align-items: center;  
+                        width: 91.4%;
+                        margin-top: 61px; 
+                        height: 321px;                      
+                    }
 
                     @media (max-width: 1279px) and (min-width: 769px) {
                         height: 25.16vw;  
@@ -160,11 +179,14 @@ html {
                         font-size: 44px;
                         line-height: 57.2px;
                         color: $white-font;
-                        width: 61.75%;
+                        width: 61.75%;                        
 
                         @media (max-width: 1279px) and (min-width: 769px) {
                             font-size: 3.44vw;
                             line-height: 4.45vw;                        
+                        }
+                        @media (width: 768px) {
+                            margin-right: 60px;                    
                         }
                     }
 
@@ -175,6 +197,10 @@ html {
                         line-height: 24px;
                         color: $normal-color-link;
                         width: 91.64%;
+                        @media (width: 768px) {
+                            width: 71%;
+                        }
+
 
                         @media (max-width: 1279px) and (min-width: 769px) {
                             font-size: 1.17vw;  
@@ -199,6 +225,9 @@ html {
                     align-items: center;
                     justify-content: center;
                     transition: .3s linear;
+                    @media (width: 768px) {
+                        // margin-left: 59px;                      
+                    }
                     }
 
                     .redirect:hover {
@@ -209,6 +238,11 @@ html {
                 img {
                     width: 58.17%;
                     margin-top: 90px;
+                    @media (width: 768px) {
+                        width: 80.35%;
+                        margin-left: 139px;
+                        margin-top: 100px;
+                    }
                 }
             }
         }
@@ -222,6 +256,10 @@ html {
                 display: flex;
                 justify-content: center;
                 padding-bottom: 102px;
+                @media (width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                   
+                }
 
                 .wrapper-content__info{
                     width: 35.83%;
@@ -233,6 +271,10 @@ html {
 
                     @media (max-width: 1279px) and (min-width: 769px) {
                         height: 29.61vw;                      
+                    }
+                    @media (width: 768px) {
+                        width: 60.7%;
+                        margin: 81px 0 0 0;                  
                     }
                     .subtitle {
                         font-family: Arial, Helvetica, sans-serif;
@@ -364,6 +406,15 @@ html {
                     }
                     .slider-item:nth-child(3) {
                         margin: 0 36px;
+                        @media (width: 768px) {
+                            margin: 0 0 0 28px;                   
+                        }
+                    }
+
+                    .slider-item:nth-child(4){
+                        @media (width: 768px) {
+                            display: none;                   
+                        }
                     }
 
                     .slider-item:hover {
@@ -414,18 +465,41 @@ html {
                     padding: 6.48vw 0 0.23vw 0;                        
                 }
             }
+
+            .wrapper-content{
+                @media (width: 768px) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;                   
+                }
+            }
+            
             .goods-part {
                 display: flex;
-                width: 85.5%;
-                justify-content: space-between;
-                margin: 55px auto;
+                width: 100%;
+                justify-content: center;
+                margin: 55px 0 -2px 0;
+                flex-wrap: wrap;
                 @media (max-width: 1279px) and (min-width: 769px) {
-                    margin: 4.30vw auto;                        
+                    margin: 4.297vw  0 0 0;                        
                 }
+                @media (width: 768px) {
+                    justify-content: space-between;
+                    width: 89%;                   
+                }
+                
                 .goods-for-help {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    margin: 0 59px 56px 61px;
+                    @media (max-width: 1279px) and (min-width: 769px) {
+                        margin: 0 4.609vw 4.375vw 4.766vw;
+                    }
+                    @media (width: 768px) {
+                        width: 22.135vw;
+                        margin: 0 0 7.161vw 0;                   
+                    }
                     img {
                         margin-bottom: 30px;
                         @media (max-width: 1279px) and (min-width: 769px) {
@@ -459,11 +533,19 @@ html {
                 display: flex;
                 width: 100%;
                 justify-content: center;
+                @media (width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                 
+                }
                 .wrapper-content__info {
                     width: 31.67%;
                     margin: 82px 0 100px 31px;
                     @media (max-width: 1279px) and (min-width: 769px) {
                         margin: 6.41vw 0 7.81vw 2.42vw;                        
+                    }
+                    @media (width: 768px) {
+                        width: 53.67%;
+                        margin: 84px 0 60px 0;                  
                     }
                     
                     h2 {
@@ -542,6 +624,9 @@ html {
                     @media (max-width: 1279px) and (min-width: 769px) {
                         width: 39.45vw;                  
                     }
+                    @media (width: 768px) {
+                        margin-bottom: 100px;                  
+                    }
                 }
             }
         }
@@ -556,6 +641,11 @@ html {
             .wrapper {
                 display: flex;
                 justify-content: space-between;
+                @media (width: 768px) {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;                  
+                }
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
                     & > .contacts > a > img {
@@ -563,12 +653,22 @@ html {
                             width: 1.95vw;                     
                         }
                     }
+                    @media (width: 768px) {
+                        width: 41.67%;
+                        position: relative;
+                        right: 6px;              
+                    }
+
 
                     .column-title {
                         margin: 57px 0 33px 0;
                         @media (max-width: 1279px) and (min-width: 769px) {
                             margin: 4.45vw 0 2.58vw 0;                     
                         }
+                        @media (width: 768px) {
+                            margin: 31px 0 32px 0;                   
+                        }
+
                     }
                     .contacts {
                         margin: 32px 0 0 0;
@@ -596,6 +696,9 @@ html {
                         line-height: 3.52vw;
                         margin: 4.38vw 0 3.13vw 0                  
                     }
+                    @media (width: 768px) {
+                        margin: 32px 0 40px 0;                   
+                    }
                 }
 
                 .contacts {
@@ -605,6 +708,9 @@ html {
                     transition: .3s linear;
                     @media (max-width: 1279px) and (min-width: 769px) {
                         margin: 2.50vw 0 0 0;                  
+                    }
+                    @media (width: 768px) {
+                        margin: 38px 0;                   
                     }
 
                     a, p {
@@ -641,6 +747,9 @@ html {
                         margin-top: 3.05vw;
                         width: 23.44vw;                  
                     }
+                    @media (width: 768px) {
+                        margin-top: 26px;                   
+                    }
                 }
             }
         }
@@ -650,6 +759,9 @@ html {
             margin: 0 auto;
             @media (max-width: 1279px) and (min-width: 769px) {
                 width: 93%;                        
+            }
+            @media (width: 768px) {
+                width: 708px;                         
             }
         }
 
