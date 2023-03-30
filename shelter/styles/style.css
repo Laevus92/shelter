@@ -178,6 +178,8 @@ html body #not-only .wrapper-content {
 @media (max-width: 767px) and (min-width: 300px) {
   html body #not-only .wrapper-content {
     flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
   }
 }
 html body #not-only .wrapper-content .wrapper-content__info {
@@ -205,9 +207,10 @@ html body #not-only .wrapper-content .wrapper-content__info {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #not-only .wrapper-content .wrapper-content__info {
-    top: 18.438vw;
+    top: 0;
     align-items: center;
     height: 297px;
+    max-width: 580px;
   }
 }
 html body #not-only .wrapper-content .wrapper-content__info h1 {
@@ -231,8 +234,8 @@ html body #not-only .wrapper-content .wrapper-content__info h1 {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #not-only .wrapper-content .wrapper-content__info h1 {
-    font-size: 7.813vw;
-    line-height: 10.156vw;
+    font-size: 25px;
+    line-height: 32.5px;
     text-align: center;
     letter-spacing: 0.06em;
     width: 70%;
@@ -305,8 +308,9 @@ html body #not-only .wrapper-content img {
 @media (max-width: 767px) and (min-width: 300px) {
   html body #not-only .wrapper-content img {
     width: 86.77%;
-    margin-top: 164px;
+    margin-top: 104px;
     align-self: end;
+    max-width: 450px;
   }
 }
 html body #about {
@@ -354,10 +358,10 @@ html body #about .wrapper-content .wrapper-content__info {
 @media (max-width: 767px) and (min-width: 300px) {
   html body #about .wrapper-content .wrapper-content__info {
     width: 100%;
-    margin: 13.125vw 0 0 0;
+    margin: 42px 0 0 0;
     width: 90%;
     text-align: justify;
-    height: 155.275vw;
+    height: 496px;
   }
 }
 html body #about .wrapper-content .wrapper-content__info .subtitle {
@@ -373,12 +377,6 @@ html body #about .wrapper-content .wrapper-content__info .subtitle {
     line-height: 1.95vw;
   }
 }
-@media (max-width: 767px) and (min-width: 300px) {
-  html body #about .wrapper-content .wrapper-content__info .subtitle {
-    font-size: 4.688vw;
-    line-height: 7.5vw;
-  }
-}
 html body #about .wrapper-content img {
   margin-top: 80px;
 }
@@ -389,8 +387,9 @@ html body #about .wrapper-content img {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #about .wrapper-content img {
-    margin-top: 40px;
+    margin-top: 41px;
     width: 86.4%;
+    max-width: 300px;
   }
 }
 html body #our-friends {
@@ -413,7 +412,7 @@ html body #our-friends .wrapper h2 {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #our-friends .wrapper h2 {
-    margin-top: 12.813vw;
+    margin-top: 42px;
   }
 }
 html body #our-friends .wrapper .slider {
@@ -602,7 +601,7 @@ html body #help {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help {
-    padding-bottom: 4.063vw;
+    padding-bottom: 14px;
   }
 }
 html body #help h2 {
@@ -616,7 +615,7 @@ html body #help h2 {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help h2 {
-    padding: 13.125vw 0 0.938vw 0;
+    padding: 42px 0 5px 0;
   }
 }
 @media (max-width: 991px) and (min-width: 768px) {
@@ -646,7 +645,7 @@ html body #help .goods-part {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help .goods-part {
-    margin: 11.875vw auto 0;
+    margin: 35px auto 0;
     width: 96.5%;
     justify-content: space-between;
   }
@@ -670,8 +669,8 @@ html body #help .goods-part .goods-for-help {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help .goods-part .goods-for-help {
-    width: 40.625vw;
-    margin: 0 0 9.063vw 0;
+    width: 130px;
+    margin: 0 0 30px 0;
   }
 }
 html body #help .goods-part .goods-for-help img {
@@ -685,8 +684,8 @@ html body #help .goods-part .goods-for-help img {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help .goods-part .goods-for-help img {
-    width: 38.8%;
-    margin-bottom: 6.563vw;
+    width: 38.7%;
+    margin-bottom: 21px;
   }
 }
 html body #help .goods-part .goods-for-help p {
@@ -705,8 +704,8 @@ html body #help .goods-part .goods-for-help p {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #help .goods-part .goods-for-help p {
-    font-size: 4.688vw;
-    line-height: 5.156vw;
+    font-size: 15px;
+    line-height: 15.5px;
   }
 }
 html body #help .goods-part:nth-child(2) {
@@ -751,7 +750,7 @@ html body #in-addition .wrapper-content .wrapper-content__info {
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content .wrapper-content__info {
     width: 100%;
-    margin: 13.013vw 0;
+    margin: 42px 0;
   }
 }
 html body #in-addition .wrapper-content .wrapper-content__info h2 {
@@ -764,7 +763,7 @@ html body #in-addition .wrapper-content .wrapper-content__info h2 {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content .wrapper-content__info h2 {
-    margin-bottom: 7.188vw;
+    margin-bottom: 20px;
   }
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__title {
@@ -787,7 +786,7 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
   html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__title {
     letter-spacing: normal;
     text-align: center;
-    margin-bottom: 7.188vw;
+    margin-bottom: 25px;
   }
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number {
@@ -808,10 +807,10 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number {
-    width: 87.813vw;
-    height: 13.438vw;
-    border-radius: 2.813vw;
-    margin: 0 auto 6.25vw;
+    width: 281px;
+    height: 43px;
+    border-radius: 9px;
+    margin: 0 auto 20px;
   }
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number img {
@@ -844,8 +843,8 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number p {
-    font-size: 4.688vw;
-    line-height: 5.156vw;
+    font-size: 15px;
+    line-height: 16.5px;
   }
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__description {
@@ -864,8 +863,8 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__description {
-    font-size: 3.75vw;
-    line-height: 5.625vw;
+    font-size: 12px;
+    line-height: 18px;
     text-align: justify;
     width: 93.4%;
     margin: 0 auto;
@@ -888,7 +887,8 @@ html body #in-addition .wrapper-content img {
 @media (max-width: 767px) and (min-width: 300px) {
   html body #in-addition .wrapper-content img {
     width: 87.3%;
-    margin-bottom: 13.125vw;
+    max-width: 400px;
+    margin-bottom: 42px;
   }
 }
 html body footer {
@@ -908,8 +908,14 @@ html body footer .wrapper {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper {
-    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
+}
+html body footer .wrapper .wrapper-content:nth-child(1) {
+  width: 278px;
 }
 html body footer .wrapper .wrapper-content:nth-child(2) {
   width: 25.17%;
@@ -932,6 +938,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 300px;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
@@ -950,7 +957,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
     width: 98%;
-    margin: 0 auto 4.188vw;
+    margin: 0 auto 40px;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
@@ -963,7 +970,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
-    margin: 7.813vw 0 0 0;
+    margin: 0;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
@@ -976,7 +983,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
-    margin: 12.5vw 0 0 0;
+    margin: 38px 0 0 0;
   }
 }
 html body footer .wrapper .column-title {
@@ -1003,10 +1010,10 @@ html body footer .wrapper .column-title {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .column-title {
-    font-size: 7.813vw;
-    line-height: 10.156vw;
+    font-size: 25px;
+    line-height: 32.5px;
     text-align: center;
-    margin: 9.063vw 0 12.5vw 0;
+    margin: 29px 0 40px 0;
     width: 100%;
   }
 }
@@ -1050,8 +1057,8 @@ html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
-    font-size: 6.25vw;
-    line-height: 7.188vw;
+    font-size: 20px;
+    line-height: 23px;
   }
 }
 html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
@@ -1123,8 +1130,8 @@ html body .section-title {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body .section-title {
-    font-size: 7.813vw;
-    line-height: 10.156vw;
+    font-size: 25px;
+    line-height: 32.5px;
     text-align: center;
   }
 }
