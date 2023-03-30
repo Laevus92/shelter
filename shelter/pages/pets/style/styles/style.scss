@@ -188,7 +188,7 @@ html {
                         }              
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 90%;
-                            justify-content: center;                       
+                            justify-content: space-evenly;                       
                         }          
         
                         .pets-list__item {
@@ -362,7 +362,13 @@ html {
                     flex-wrap: wrap;                  
                 }
                 @media (max-width:767px) and (min-width: 300px) {
-                    flex-direction: column;                         
+                    align-items: center;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;                         
+                }
+                .wrapper-content:nth-child(1) {
+                    width: 278px;
                 }
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
@@ -380,7 +386,8 @@ html {
                         width: 100%;
                         display: flex;
                         flex-direction: column;
-                        align-items: flex-start;                         
+                        align-items: flex-start;
+                        max-width: 300px;                         
                     }
 
 
@@ -394,7 +401,7 @@ html {
                         }
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 98%;
-                            margin: 0 auto 4.188vw;
+                            margin: 0 auto 40px;
                         }
 
                     }
@@ -404,7 +411,7 @@ html {
                             margin: 2.50vw 0 0 0;                  
                         }
                         @media (max-width:767px) and (min-width: 300px) {
-                            margin: 7.813vw 0 0 0;                         
+                            margin: 0;                         
                         }
                     }
                     .contacts:nth-child(3){
@@ -413,7 +420,7 @@ html {
                             margin: 2.50vw 0 0 0;                  
                         }
                         @media (max-width:767px) and (min-width: 300px) {
-                            margin: 12.5vw 0 0 0;
+                            margin: 38px 0 0 0;
                         }
                 }
                 }
@@ -435,10 +442,10 @@ html {
                         width: 36.328vw;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
-                        font-size: 7.813vw;
-                        line-height: 10.156vw;
+                        font-size: 25px;
+                        line-height: 32.5px;
                         text-align: center;
-                        margin: 9.063vw 0 12.5vw 0;
+                        margin: 29px 0 40px 0;
                         width: 100%;                        
                     }
                 }
@@ -473,8 +480,8 @@ html {
                             line-height: 1.56vw;               
                         }
                         @media (max-width:767px) and (min-width: 300px) {
-                            font-size: 6.250vw;
-                            line-height: 7.188vw;                       
+                            font-size: 20px;
+                            line-height: 23px;                       
                         } 
 
                         img {
@@ -544,9 +551,9 @@ html {
                 padding: 80px 0 30px 0;                          
             }
             @media (max-width:767px) and (min-width: 300px) {
-                font-size: 7.813vw;
-                line-height: 10.156vw;
-                padding: 13.125vw 0 12.7vw 0;                     
+                font-size: 25px;
+                line-height: 32.5px;
+                padding: 42px 0 41px 0;                     
             }
         }
    }

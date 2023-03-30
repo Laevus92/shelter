@@ -185,7 +185,7 @@ html body main #our-friends .wrapper .pets-list {
 @media (max-width: 767px) and (min-width: 300px) {
   html body main #our-friends .wrapper .pets-list {
     width: 90%;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 }
 html body main #our-friends .wrapper .pets-list .pets-list__item {
@@ -350,8 +350,14 @@ html body footer .wrapper {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper {
-    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
+}
+html body footer .wrapper .wrapper-content:nth-child(1) {
+  width: 278px;
 }
 html body footer .wrapper .wrapper-content:nth-child(2) {
   width: 25.17%;
@@ -374,6 +380,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 300px;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
@@ -392,7 +399,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
     width: 98%;
-    margin: 0 auto 4.188vw;
+    margin: 0 auto 40px;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
@@ -405,7 +412,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
-    margin: 7.813vw 0 0 0;
+    margin: 0;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
@@ -418,7 +425,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .contacts:nth-child(3) {
-    margin: 12.5vw 0 0 0;
+    margin: 38px 0 0 0;
   }
 }
 html body footer .wrapper .column-title {
@@ -445,10 +452,10 @@ html body footer .wrapper .column-title {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .column-title {
-    font-size: 7.813vw;
-    line-height: 10.156vw;
+    font-size: 25px;
+    line-height: 32.5px;
     text-align: center;
-    margin: 9.063vw 0 12.5vw 0;
+    margin: 29px 0 40px 0;
     width: 100%;
   }
 }
@@ -492,8 +499,8 @@ html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .contacts a, html body footer .wrapper .contacts p {
-    font-size: 6.25vw;
-    line-height: 7.188vw;
+    font-size: 20px;
+    line-height: 23px;
   }
 }
 html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
@@ -576,9 +583,9 @@ html body .section-title {
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body .section-title {
-    font-size: 7.813vw;
-    line-height: 10.156vw;
-    padding: 13.125vw 0 12.7vw 0;
+    font-size: 25px;
+    line-height: 32.5px;
+    padding: 42px 0 41px 0;
   }
 }
 
