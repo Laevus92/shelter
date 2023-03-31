@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 html body {
   box-sizing: border-box;
@@ -146,6 +147,7 @@ html body header .header-inside .burger {
   border-top: 2px solid #F1CDB3;
   border-bottom: 2px solid #F1CDB3;
   transition: 0.2s linear;
+  cursor: pointer;
   display: none;
 }
 html body header .header-inside .burger::before {
@@ -202,6 +204,7 @@ html body header .header-inside .pop-up-background .pop-up-menu .nav-list li {
   line-height: 51.2px;
   text-align: center;
   margin: 20px auto;
+  cursor: pointer;
 }
 html body header .header-inside .pop-up-background .pop-up-menu .nav-list li a {
   text-decoration: none;
@@ -977,7 +980,7 @@ html body footer .wrapper {
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(1) {
-  width: 278px;
+  width: 279px;
 }
 html body footer .wrapper .wrapper-content:nth-child(2) {
   width: 25.17%;
@@ -1019,7 +1022,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
     width: 98%;
-    margin: 0 auto 40px;
+    margin: 40px auto;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
@@ -1082,7 +1085,7 @@ html body footer .wrapper .column-title {
 html body footer .wrapper .contacts {
   display: flex;
   align-items: center;
-  margin: 40px 0;
+  margin: 40px 0 0 0;
   transition: 0.3s linear;
 }
 @media (max-width: 1279px) and (min-width: 992px) {
@@ -1092,7 +1095,7 @@ html body footer .wrapper .contacts {
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body footer .wrapper .contacts {
-    margin: 38px 0;
+    margin: 38px 0 0 0;
   }
 }
 @media (max-width: 767px) and (min-width: 300px) {
@@ -1147,7 +1150,7 @@ html body footer .wrapper .footer__image {
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body footer .wrapper .footer__image {
-    margin-top: 28px;
+    margin-top: 65px;
   }
 }
 @media (max-width: 767px) and (min-width: 300px) {

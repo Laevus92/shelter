@@ -11,6 +11,7 @@ $x2-dark-font: #545454;
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     
     body {
         box-sizing: border-box;
@@ -117,6 +118,7 @@ html {
                     border-top: 2px solid black;
                     border-bottom: 2px solid black;
                     transition: .2s linear;
+                    cursor: pointer;
                     &::before {
                         content: '';
                         display: block;
@@ -173,6 +175,7 @@ html {
                                 line-height: 51.2px;
                                 text-align: center;
                                 margin: 20px auto ;
+                                cursor: pointer;
     
                                 a {
                                     text-decoration: none;
@@ -418,7 +421,7 @@ html {
 
         footer {
             width: 100%;
-            background: url(../assets/images/noise_transparent.svg), 
+            background: url(../../../../assets/images/noise_transparent.svg), 
                         radial-gradient(100% 900% at 0% 0%, 
                         #5b483a 0%, #262425 100%), 
                         linear-gradient(0deg, #211f20, #211f20);
@@ -438,7 +441,7 @@ html {
                     justify-content: center;                         
                 }
                 .wrapper-content:nth-child(1) {
-                    width: 278px;
+                    width: 279px;
                 }
                 .wrapper-content:nth-child(2){
                     width: 25.17%;
@@ -471,7 +474,7 @@ html {
                         }
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 98%;
-                            margin: 0 auto 40px;
+                            margin: 40px auto;
                         }
 
                     }
@@ -523,13 +526,13 @@ html {
                 .contacts {
                     display: flex;
                     align-items: center;
-                    margin: 40px 0;
+                    margin: 40px 0 0 0;
                     transition: .3s linear;
                     @media (max-width: 1279px) and (min-width: 992px) {
                         margin: 2.50vw 0 0 0;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin: 38px 0;                   
+                        margin: 38px 0 0 0;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                         justify-content: center;                         
@@ -574,7 +577,7 @@ html {
                         width: 23.44vw;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin-top: 28px;                   
+                        margin-top: 65px;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                        width: 86.8%;
