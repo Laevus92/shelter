@@ -525,14 +525,38 @@ html {
                         transition: .3s linear;
                     }
 
+                    .slider__window {
+                        display: flex;
+                        width: 83.4%;
+                        max-width: 990px;
+                        position: relative;
+                        overflow: hidden;
+                        @media (max-width: 991px) and (min-width: 768px) {
+                            width: 82.2%;
+                            max-width: 580px;                        
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            width: 90.4%;
+                            max-width: 270px;
+                        }
+                    }
+
                     .slider-item {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         background-color:#FAFAFA;
                         border-radius: 9px;
+                        margin-right: 9.1%;
+                        width: 270px;
+                        height: 435px;
                         cursor: pointer;
+                        transition: .7s linear;
+                        @media (max-width: 991px) and (min-width: 768px) {
+                            margin-right: 6.8%;                        
+                        }
                         .pets-photo{
+                            transition: .3s linear;
                             @media (max-width: 1279px) and (min-width: 992px) {
                                 width: 21.09vw;                         
                             }
@@ -580,30 +604,14 @@ html {
 
                         }
                     }
-                    .slider-item:nth-child(3) {
-                        margin: 0 36px;
-                        @media (max-width:991px) and (min-width: 768px) {
-                            margin: 0 0 0 28px;                   
-                        }
-                        @media (max-width:767px) and (min-width: 300px) {
-                            display: none;
-                        }
-                    }
 
-                    .slider-item:nth-child(4){
-                        @media (max-width:991px) and (min-width: 768px) {
-                            display: none;                   
-                        }
-                        @media (max-width:767px) and (min-width: 300px) {
-                            display: none;;
-                        }
-                    }
 
                     .slider-item:hover {
                         background-color: $white-bg;
                         transition: .3s linear;
                     }
                 }
+
                 .redirect {
                     width: 261px;
                     height: 52px;

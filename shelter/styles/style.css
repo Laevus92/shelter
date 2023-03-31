@@ -542,13 +542,44 @@ html body #our-friends .wrapper .slider .slider__next:hover {
   border: transparent;
   transition: 0.3s linear;
 }
+html body #our-friends .wrapper .slider .slider__window {
+  display: flex;
+  width: 83.4%;
+  max-width: 990px;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider__window {
+    width: 82.2%;
+    max-width: 580px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window {
+    width: 90.4%;
+    max-width: 270px;
+  }
+}
 html body #our-friends .wrapper .slider .slider-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #FAFAFA;
   border-radius: 9px;
+  margin-right: 9.1%;
+  width: 270px;
+  height: 435px;
   cursor: pointer;
+  transition: 0.7s linear;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider-item {
+    margin-right: 6.8%;
+  }
+}
+html body #our-friends .wrapper .slider .slider-item .pets-photo {
+  transition: 0.3s linear;
 }
 @media (max-width: 1279px) and (min-width: 992px) {
   html body #our-friends .wrapper .slider .slider-item .pets-photo {
@@ -598,29 +629,6 @@ html body #our-friends .wrapper .slider .slider-item .learn-more:hover {
   background-color: #fddcc4;
   border: transparent;
   transition: 0.3s linear;
-}
-html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-  margin: 0 36px;
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-    margin: 0 0 0 28px;
-  }
-}
-@media (max-width: 767px) and (min-width: 300px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-    display: none;
-  }
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(4) {
-    display: none;
-  }
-}
-@media (max-width: 767px) and (min-width: 300px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(4) {
-    display: none;
-  }
 }
 html body #our-friends .wrapper .slider .slider-item:hover {
   background-color: #fff;
