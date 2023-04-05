@@ -55,23 +55,150 @@ navLinks.forEach(link => {
 const previousButton = document.querySelector('.slider__previous');
 const nextButton = document.querySelector('.slider__next');
 const visibleCards = document.querySelector('.slider__window');
+const petsLists = document.querySelectorAll('.pets-list');
+const currentList = document.querySelector('.pets-list.current');
+const previousList = document.querySelector('.pets-list.previous');
+const nextList = document.querySelector('.pets-list.next');
 
 function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
+function moveLeft() {
+    if (previousList.innerHTML === '' && nextList.innerHTML === '') {
+        petsLists.forEach(list => list.classList.add('transition-left'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+        if (window.innerWidth > 991) {
+            for (let i = 0; i < 3; i++){
+                creatingCards(previousList, 'left');
+            }
+        } else if (window.innerWidth > 767 && window.innerWidth < 992) {
+            for (let i = 0; i < 2; i++){
+                creatingCards(previousList, 'left');
+            }
+        } else {
+            creatingCards(previousList, 'left');
+        }
+    } else if (previousList.innerHTML === '' && nextList.innerHTML !== '') {
+        petsLists.forEach(list => list.classList.add('transition-left'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+        if (window.innerWidth > 991) {
+            petsArray = petsArray.slice(0, 3)
+            for (let i = 0; i < 3; i++){
+                creatingCards(previousList, 'left');
+            }
+        } else if (window.innerWidth > 767 && window.innerWidth < 992) {
+            petsArray = petsArray.slice(0, 2)
+            for (let i = 0; i < 2; i++){
+                creatingCards(previousList, 'left');
+            }
+        } else {
+            petsArray = petsArray.slice(0, 1)
+            creatingCards(previousList, 'left');
+        }
+    } else if (previousList.innerHTML !== '' && nextList.innerHTML === '') {
+        petsLists.forEach(list => list.classList.add('transition-left'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+    }
+
+}
+
+function moveRight() {
+    if (previousList .innerHTML === '' && nextList.innerHTML === '') {
+        petsLists.forEach(list => list.classList.add('transition-right'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+        if (window.innerWidth > 991) {
+            for (let i = 0; i < 3; i++){
+                creatingCards(nextList, 'right');
+            }
+        } else if (window.innerWidth > 767 && window.innerWidth < 992) {
+            for (let i = 0; i < 2; i++){
+                creatingCards(nextList, 'right');
+            }
+        } else {
+            creatingCards(nextList, 'right');
+        }
+    } else if (previousList.innerHTML !== '' && nextList.innerHTML === '') {
+        petsLists.forEach(list => list.classList.add('transition-right'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+        if (window.innerWidth > 991) {
+            petsArray = petsArray.slice(3)
+            for (let i = 0; i < 3; i++){
+                creatingCards(nextList, 'right');
+            }
+        } else if (window.innerWidth > 767 && window.innerWidth < 992) {
+            petsArray = petsArray.slice(2)
+            for (let i = 0; i < 2; i++){
+                creatingCards(nextList, 'right');
+            }
+        } else {
+            petsArray = petsArray.slice(1)
+            creatingCards(nextList, 'right');
+        }
+    } else if (previousList.innerHTML === '' && nextList.innerHTML !== '') {
+        petsLists.forEach(list => list.classList.add('transition-right'));
+        previousButton.removeEventListener('click', moveLeft);
+        nextButton.removeEventListener('click', moveRight);
+    }
+}
+
+previousButton.addEventListener('click', moveLeft);
+
+nextButton.addEventListener('click', moveRight)
+
+petsLists[0].addEventListener('animationend', (animation) => {
+    if (animation.animationName === 'move-left' || 
+    animation.animationName === 'move-left-laptop' ||
+    animation.animationName === 'move-left-tablet' ||
+    animation.animationName === 'move-left-phone') {
+        petsLists[0].classList.remove('transition-left');
+        petsLists[1].classList.remove('transition-left');
+        petsLists[2].classList.remove('transition-left');
+        nextList.innerHTML = currentList.innerHTML;
+        currentList.innerHTML = ''
+        currentList.innerHTML = previousList.innerHTML
+        previousList.innerHTML = ''
+        
+    } else {
+        petsLists[0].classList.remove('transition-right');
+        petsLists[1].classList.remove('transition-right');
+        petsLists[2].classList.remove('transition-right');
+        previousList.innerHTML = currentList.innerHTML;
+        currentList.innerHTML = '';
+        currentList.innerHTML = nextList.innerHTML;
+        nextList.innerHTML = '';
+
+    }
+
+    previousButton.addEventListener('click', moveLeft);
+    nextButton.addEventListener('click', moveRight);
+})
+
 let petsArray = [];
 
-function creatingCards() {
+function creatingCards(list, direction) {
     let cardNumber = getRandomNumber(0, 7);
 
     if (!petsArray.includes(cardNumber)) {
-        petsArray.push(cardNumber);
+        if (direction === 'right') {
+            petsArray.push(cardNumber);
+        } else {
+            petsArray.unshift(cardNumber);
+        }
     }else {
         do {
             cardNumber = getRandomNumber(0, 7);
         } while (petsArray.includes(cardNumber))
-        petsArray.push(cardNumber)
+        if (direction === 'right') {
+            petsArray.push(cardNumber);
+        } else {
+            petsArray.unshift(cardNumber);
+        }
     }
 
 
@@ -83,8 +210,8 @@ function creatingCards() {
     }
 
     let div = document.createElement('div');
-    div.classList.add('slider-item');
-    visibleCards.append(div);
+    div.classList.add('pets-item');
+    list.append(div);
 
     let petsPhoto = document.createElement('img');
     petsPhoto.classList.add('pets-photo');
@@ -93,7 +220,15 @@ function creatingCards() {
     }).catch(error => {
         console.error(error);
     })
-    document.querySelectorAll('.slider-item')[petsArray.length-1].append(petsPhoto);
+
+    if (direction === 'left') {
+        document.querySelectorAll('.pets-list.previous > .pets-item')[document.querySelectorAll('.pets-list.previous > .pets-item').length-1].append(petsPhoto);
+    } else if (direction === 'center') {
+        document.querySelectorAll('.pets-list.current > .pets-item')[document.querySelectorAll('.pets-list.current > .pets-item').length-1].append(petsPhoto);
+    } else if (direction === 'right') {
+        document.querySelectorAll('.pets-list.next > .pets-item')[document.querySelectorAll('.pets-list.next > .pets-item').length-1].append(petsPhoto);
+    }
+    
 
     let petsName = document.createElement('h2');
     petsName.classList.add('name');
@@ -102,27 +237,76 @@ function creatingCards() {
     }).catch(error => {
         console.error(error);
     })
-    document.querySelectorAll('.slider-item')[petsArray.length-1].append(petsName);
+
+    if (direction === 'left') {
+        document.querySelectorAll('.pets-list.previous > .pets-item')[document.querySelectorAll('.pets-list.previous > .pets-item').length-1].append(petsName);
+    } else if (direction === 'center') {
+        document.querySelectorAll('.pets-list.current > .pets-item')[document.querySelectorAll('.pets-list.current > .pets-item').length-1].append(petsName);
+    } else if (direction === 'right') {
+        document.querySelectorAll('.pets-list.next > .pets-item')[document.querySelectorAll('.pets-list.next > .pets-item').length-1].append(petsName);
+    }
 
     let learnMoreButton = document.createElement('button');
     learnMoreButton.classList.add('learn-more');
     learnMoreButton.innerHTML = 'Learn more';
-    document.querySelectorAll('.slider-item')[petsArray.length-1].append(learnMoreButton);    
+
+    if (direction === 'left') {
+        document.querySelectorAll('.pets-list.previous > .pets-item')[document.querySelectorAll('.pets-list.previous > .pets-item').length-1].append(learnMoreButton);
+    } else if (direction === 'center') {
+        document.querySelectorAll('.pets-list.current > .pets-item')[document.querySelectorAll('.pets-list.current > .pets-item').length-1].append(learnMoreButton);
+    } else if (direction === 'right') {
+        document.querySelectorAll('.pets-list.next > .pets-item')[document.querySelectorAll('.pets-list.next > .pets-item').length-1].append(learnMoreButton);
+    } 
 }
 
 if (window.innerWidth > 991) {
     for (let i = 0; i < 3; i++){
-        creatingCards();
+        creatingCards(currentList, 'center');
     }
 } else if (window.innerWidth > 767 && window.innerWidth < 992) {
     for (let i = 0; i < 2; i++){
-        creatingCards();
+        creatingCards(currentList, 'center');
     }
 } else {
-    creatingCards()
+    creatingCards(currentList, 'center')
 }
 
+const breakDesktop = window.matchMedia('(min-width: 1280px)');
+const breakLaptop = window.matchMedia('(max-width: 1279px) and (min-width: 992px)');
+const breakTablet = window.matchMedia('(max-width:991px) and (min-width: 768px)');
+const breakPhone = window.matchMedia('(max-width:767px) and (min-width: 300px)');
 
 
-console.log(petsArray)
+breakLaptop.addEventListener('change', () => {
+    if (breakLaptop.matches === true) {
+        petsArray = []
+        previousList.innerHTML = '';
+        currentList.innerHTML = '';
+        nextList.innerHTML ='';
+        for (let i = 0; i < 3; i++){
+            creatingCards(currentList, 'center');
+        }
+    }
+})
 
+breakTablet.addEventListener('change', () => {
+    if ( breakTablet.matches === true) {
+        petsArray = []
+        previousList.innerHTML = '';
+        currentList.innerHTML = '';
+        nextList.innerHTML ='';
+        for (let i = 0; i < 2; i++){
+            creatingCards(currentList, 'center');
+        }
+    }
+})
+
+breakPhone.addEventListener('change', () => {
+    if (breakPhone.matches === true) {
+        petsArray = []
+        previousList.innerHTML = '';
+        currentList.innerHTML = '';
+        nextList.innerHTML ='';
+        creatingCards(currentList, 'center')
+    }
+})

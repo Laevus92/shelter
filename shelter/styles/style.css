@@ -543,51 +543,89 @@ html body #our-friends .wrapper .slider .slider__next:hover {
   transition: 0.3s linear;
 }
 html body #our-friends .wrapper .slider .slider__window {
+  height: 435px;
+  width: 90%;
+  max-width: 1080px;
   display: flex;
-  width: 83.4%;
-  max-width: 990px;
-  position: relative;
   overflow: hidden;
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body #our-friends .wrapper .slider .slider__window {
-    width: 82.2%;
-    max-width: 580px;
+    width: 85.3%;
+    max-width: 604px;
   }
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #our-friends .wrapper .slider .slider__window {
-    width: 90.4%;
-    max-width: 270px;
+    width: 270px;
   }
 }
-html body #our-friends .wrapper .slider .slider-item {
+html body #our-friends .wrapper .slider .slider__window .pets-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #FAFAFA;
-  border-radius: 9px;
-  margin-right: 9.1%;
-  width: 270px;
-  height: 435px;
-  cursor: pointer;
-  transition: 0.7s linear;
+  flex-shrink: 0;
+  justify-content: space-between;
+  position: relative;
+  left: -1080px;
+  width: 1080px;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -84.375vw;
+    width: 84.375vw;
+  }
 }
 @media (max-width: 991px) and (min-width: 768px) {
-  html body #our-friends .wrapper .slider .slider-item {
-    margin-right: 6.8%;
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -620px;
+    width: 620px;
   }
 }
-html body #our-friends .wrapper .slider .slider-item .pets-photo {
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -270px;
+    width: 270px;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+  width: 270px;
+  height: 435px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 45px;
+  background-color: #FAFAFA;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.3s linear;
+  align-items: center;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    width: 21.094vw;
+    height: 37.584vw;
+    margin: 0 3.516vw;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    margin: 0 29px 0 11px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    margin: 0;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item:hover {
+  background-color: #fff;
   transition: 0.3s linear;
 }
 @media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .pets-photo {
-    width: 21.09vw;
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item img {
+    width: 21.094vw;
   }
 }
-html body #our-friends .wrapper .slider .slider-item .name {
-  margin: 26px 0 30px 0;
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item h2 {
+  margin: 30px 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 20px;
@@ -595,13 +633,7 @@ html body #our-friends .wrapper .slider .slider-item .name {
   letter-spacing: 0.06em;
   color: #545454;
 }
-@media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .name {
-    font-size: 1.56vw;
-    line-height: 1.8vw;
-  }
-}
-html body #our-friends .wrapper .slider .slider-item .learn-more {
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item button {
   width: 187px;
   height: 52px;
   border: 2px solid #F1CDB3;
@@ -617,21 +649,9 @@ html body #our-friends .wrapper .slider .slider-item .learn-more {
   margin-bottom: 30px;
   transition: 0.3s linear;
 }
-@media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .learn-more {
-    width: 14.61vw;
-    height: 4.06vw;
-    border-radius: 7.81vw;
-    font-size: 1.33vw;
-  }
-}
-html body #our-friends .wrapper .slider .slider-item .learn-more:hover {
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item button:hover {
   background-color: #fddcc4;
   border: transparent;
-  transition: 0.3s linear;
-}
-html body #our-friends .wrapper .slider .slider-item:hover {
-  background-color: #fff;
   transition: 0.3s linear;
 }
 html body #our-friends .wrapper .redirect {
@@ -1144,7 +1164,7 @@ html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p
   }
 }
 html body footer .wrapper .contacts:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 0.3s linear;
 }
 html body footer .wrapper .footer__image {
@@ -1210,6 +1230,112 @@ html body .section-title {
 }
 html body a {
   text-decoration: none;
+}
+@keyframes move-right {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: -2160px;
+  }
+}
+@keyframes move-right-laptop {
+  from {
+    left: -84.375vw;
+  }
+  to {
+    left: -168.75vw;
+  }
+}
+@keyframes move-right-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: -1240px;
+  }
+}
+@keyframes move-right-phone {
+  from {
+    left: -270px;
+  }
+  to {
+    left: -540px;
+  }
+}
+@keyframes move-left {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes move-left-laptop {
+  from {
+    left: -84.375vw;
+  }
+  to {
+    left: 0vw;
+  }
+}
+@keyframes move-left-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes move-left-phone {
+  from {
+    left: -270px;
+  }
+  to {
+    left: 0px;
+  }
+}
+html .transition-right {
+  animation-name: move-right;
+  animation-duration: 3s;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html .transition-right {
+    animation-name: move-right-laptop;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .transition-right {
+    animation-name: move-right-tablet;
+    animation-duration: 2s;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .transition-right {
+    animation-name: move-right-phone;
+    animation-duration: 1s;
+  }
+}
+html .transition-left {
+  animation-name: move-left;
+  animation-duration: 3s;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html .transition-left {
+    animation-name: move-left-laptop;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .transition-left {
+    animation-name: move-left-tablet;
+    animation-duration: 2s;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .transition-left {
+    animation-name: move-left-phone;
+    animation-duration: 1s;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -578,7 +578,7 @@ html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p
   }
 }
 html body footer .wrapper .contacts:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 0.3s linear;
 }
 html body footer .wrapper .footer__image {
