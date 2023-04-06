@@ -452,6 +452,7 @@ html {
         #our-friends {
             width: 100%;
             background-color: $grey-bg;
+            position: relative;
             .wrapper {
                 display: flex;
                 flex-direction: column;
@@ -585,6 +586,7 @@ html {
                                 &:hover{
                                     background-color: $white-bg;
                                     transition: .3s linear;
+                                    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
                                 }
 
                                 img {
@@ -1112,7 +1114,205 @@ html {
             text-decoration: none;
         }
    }
-   
+
+   .pets-info{
+    visibility: hidden;
+   }
+
+   .pets-info.active{
+    visibility: visible;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: 
+    rgba(41, 41, 41, 0.6);
+    transition: .3s linear;
+    .wrapper-pets-info {
+        width: 952px;
+        max-width: 952px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 0 auto;
+        position: relative;
+        top: 15.6%;
+        @media (max-width:991px) and (min-width: 768px) {
+            width: 682px;                        
+        }
+        @media (max-width:767px) and (min-width: 300px) {
+            width: 270px;                          
+        }
+
+        .close-button {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid $color-primary;
+            background-color: transparent;
+            transition: .3s linear;
+            cursor: pointer;
+            .cross {
+                position: relative;
+                display: block;
+                width: 20px;
+                height: 20px;
+                margin: 0 auto;
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    background-color: black;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 44%;
+                    left: 0;
+                    border-radius: 2px;
+                }
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    background-color: black;
+                    position: absolute;
+                    transform: rotate(-45deg);
+                    top: 44%;
+                    left: 0;
+                    border-radius: 2px;
+                }
+            }
+            &:hover {
+                background-color: $color-primary;
+                transition: .3s linear;
+                transform: rotate(90deg);
+            }
+        }
+        .modal-window {
+            width: 900px;
+            background-color: white;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            border-radius: 9px;
+            overflow: hidden;
+            justify-content: space-between;
+            transition: 0.3s linear;
+            @media (max-width:991px) and (min-width: 768px) {
+                width: 630px;                         
+            }
+            @media (max-width:767px) and (min-width: 300px) {
+                width: 240px;                          
+            }
+
+            img {
+                width: 55.6%;
+                object-fit: contain;
+                @media (max-width:767px) and (min-width: 300px) {
+                    display: none;                       
+                }
+            }
+
+            .description {
+                width: 351px;
+                margin: 50px 20px 0 0;
+                @media (max-width:991px) and (min-width: 768px) {
+                    width: 260px; 
+                    margin: 10px;                         
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 220px;
+                    margin: 10px;                       
+                }
+                
+                .pets-name {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 35px;
+                    line-height: 130%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 10px;
+                    @media (max-width:767px) and (min-width: 300px) {
+                        text-align: center;                     
+                    }
+                }
+                .animal {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 115%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 40px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        margin-bottom: 20px;
+                        text-align: center;                       
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        margin-bottom: 20px;                     
+                    }
+                }
+
+                .animal-story {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 110%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 40px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        margin-bottom: 20px; 
+                        font-size: 13px;                      
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        font-size: 13px;
+                        margin-bottom: 24px;
+                        text-align: justify;                     
+                    }
+                }
+                ul {
+                    margin-left: 14px;
+                    li {
+                        font-family: 'Georgia';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 15px;
+                        line-height: 110%;
+                        letter-spacing: 0.06em;
+                        margin-bottom: 11px;
+                        list-style: none;
+                        position: relative;
+                        @media (max-width:991px) and (min-width: 768px) {
+                            margin-bottom: 5px;                       
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            margin-bottom: 5px;                    
+                        }
+                        &::before {
+                            content: '';
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            position: absolute;
+                            background-color: $color-primary;
+                            top: 28%;
+                            left: -4%;
+                        }
+                        span {
+                            font-weight: 600;
+                        }
+                    } 
+                }
+                
+            }
+        }
+    }
+   }
+
+   //animation
    @keyframes move-right {
     from {left: -1080px;}
     to {left: -2160px;}   
