@@ -256,12 +256,17 @@ html {
                         justify-content: space-between;
                         width: 100%;
                         flex-wrap: wrap;
+                        height: 922px;
+                        align-items: center;
+                        align-content: center;
                         @media (max-width:991px) and (min-width: 768px) {
-                            width: 82%;                        
+                            width: 82%;
+                            height: 1383px;                        
                         }              
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 90%;
-                            justify-content: space-evenly;                       
+                            justify-content: space-evenly;  
+                            height: 1383px;                     
                         }          
         
                         .pets-list__item {
@@ -273,22 +278,7 @@ html {
                             cursor: pointer;
                             transition: .3s linear;
                             margin: 0 0 30px 0;
-                            @media (max-width:991px) and (min-width: 768px) {
-                                &:nth-child(8),
-                                &:nth-child(7) {
-                                    display: none;
-                                }                          
-                            }
-                            @media (max-width:767px) and (min-width: 300px) {
-                                &:nth-child(4),
-                                &:nth-child(5),
-                                &:nth-child(6),
-                                &:nth-child(7),
-                                &:nth-child(8) {
-                                    display: none;
-                                }                                                         
-                            }
-                            
+                            transition: 0.7s linear;                   
                             
                             img {
                                 @media (max-width: 1279px) and (min-width: 992px) {
@@ -343,6 +333,7 @@ html {
                         .pets-list__item:hover {
                             background-color: $white-bg;
                             transition: .3s linear;
+                            box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
                         }
                     }
                     .pets-list:nth-child(3) {
@@ -393,11 +384,10 @@ html {
                                 line-height: 1.797vw;
                             }                            
                         }
-    
-                        .nav-panel__buttons:nth-child(1),
-                        .nav-panel__buttons:nth-child(2){
+                        .nav-panel__buttons.unactive{
                             border: 2px solid $normal-color-link;
                             color: $normal-color-link;
+                            cursor: unset;
                         }
     
                         .nav-panel__buttons:nth-child(3){
@@ -406,9 +396,13 @@ html {
                             background-color: $color-primary;
     
                         }
-            
-                        .nav-panel__buttons:nth-child(4):hover,
-                        .nav-panel__buttons:nth-child(5):hover{
+
+                        .nav-panel__buttons.active {
+                            border: 2px solid $color-primary;
+                            color: black;
+                        }
+
+                        .nav-panel__buttons.active:hover{
                             background-color: #fddcc4;
                             border: transparent;
                             transition: .3s linear;

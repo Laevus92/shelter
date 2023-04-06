@@ -460,3 +460,12 @@ closeBTN.addEventListener('click', () => {
     document.querySelector('html').style.overflow = 'unset'
     modalWindow.innerHTML = ''
 })
+
+const popUpInfoBackground = document.querySelector('.pets-info')
+popUpInfoBackground.addEventListener('click', (click) => {
+    if(click.target === popUpInfoBackground) {
+        popUpInfo.classList.remove('active')
+        document.querySelector('html').style.overflow = 'unset'
+        modalWindow.innerHTML = ''
+    }
+})
