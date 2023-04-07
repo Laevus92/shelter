@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 html body {
   box-sizing: border-box;
@@ -32,9 +33,32 @@ html body header .header-inside {
     margin: 0 0 0 10px;
   }
 }
+@media (max-width: 767px) and (min-width: 300px) {
+  html body header .header-inside {
+    width: 93.33%;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body header .header-inside {
+    width: 93.43%;
+    margin: 0 0 0 10px;
+  }
+}
 html body header .header-inside nav {
   width: 36.92%;
   max-width: 443px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body header .header-inside nav {
+    width: 62.69%;
+    position: relative;
+    bottom: 1.6px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body header .header-inside nav {
+    display: none;
+  }
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body header .header-inside nav {
@@ -61,6 +85,11 @@ html body header .header-inside nav .nav-list {
     font-size: 1.17vw;
   }
 }
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body header .header-inside nav .nav-list {
+    font-size: 1.17vw;
+  }
+}
 html body header .header-inside nav .nav-list .nav-item__current {
   list-style-type: none;
   color: #FAFAFA;
@@ -74,6 +103,11 @@ html body header .header-inside nav .nav-list .nav-item__current::after {
   position: absolute;
   left: 0;
   top: 22px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body header .header-inside nav .nav-list .nav-item__current::after {
+    top: 24px;
+  }
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body header .header-inside nav .nav-list .nav-item__current::after {
@@ -107,6 +141,11 @@ html body header .header-inside nav .nav-list .nav-item:active::after {
     top: 1.72vw;
   }
 }
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body header .header-inside nav .nav-list .nav-item:active::after {
+    top: 1.72vw;
+  }
+}
 html body header .header-inside .header-inside__logo {
   display: flex;
   flex-direction: column;
@@ -119,6 +158,12 @@ html body header .header-inside .header-inside__logo .logo-title {
   line-height: 35.2px;
   letter-spacing: 0.06em;
   margin-bottom: 5px;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body header .header-inside .header-inside__logo .logo-title {
+    font-size: 2.5vw;
+    line-height: 2.73vw;
+  }
 }
 @media (max-width: 1279px) and (min-width: 992px) {
   html body header .header-inside .header-inside__logo .logo-title {
@@ -145,6 +190,8 @@ html body header .header-inside .burger {
   height: 22px;
   border-top: 2px solid #F1CDB3;
   border-bottom: 2px solid #F1CDB3;
+  transition: 0.2s linear;
+  cursor: pointer;
   display: none;
 }
 html body header .header-inside .burger::before {
@@ -159,7 +206,69 @@ html body header .header-inside .burger::before {
 @media (max-width: 767px) and (min-width: 300px) {
   html body header .header-inside .burger {
     display: block;
+    z-index: 2;
   }
+}
+html body header .header-inside .pop-up-background {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.3764705882);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  flex-direction: row-reverse;
+  visibility: hidden;
+  overflow: hidden;
+}
+html body header .header-inside .pop-up-background .pop-up-menu {
+  width: 320px;
+  height: 100vh;
+  background: #292929;
+  position: absolute;
+  right: -320px;
+  transition: 0.2s linear;
+  z-index: 2;
+}
+html body header .header-inside .pop-up-background .pop-up-menu.active {
+  right: 0px;
+  transition: 0.2s linear;
+}
+html body header .header-inside .pop-up-background .pop-up-menu .nav-list {
+  margin-top: 228px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+html body header .header-inside .pop-up-background .pop-up-menu .nav-list li {
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  line-height: 51.2px;
+  text-align: center;
+  margin: 20px auto;
+  cursor: pointer;
+}
+html body header .header-inside .pop-up-background .pop-up-menu .nav-list li a {
+  text-decoration: none;
+  color: #CDCDCD;
+}
+html body header .header-inside .pop-up-background .pop-up-menu .nav-list .nav-item__current {
+  color: #FAFAFA;
+  position: relative;
+}
+html body header .header-inside .pop-up-background .pop-up-menu .nav-list .nav-item__current::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: #F1CDB3;
+  position: absolute;
+  top: 55px;
+  left: 0;
+}
+html body header .header-inside .pop-up-background.active {
+  visibility: visible;
 }
 html body #not-only {
   width: 100%;
@@ -266,6 +375,23 @@ html body #not-only .wrapper-content .wrapper-content__info .subtitle {
     width: 97.64%;
   }
 }
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #not-only .wrapper-content .wrapper-content__info .subtitle {
+    font-size: 1.17vw;
+    line-height: 1.88vw;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #not-only .wrapper-content .wrapper-content__info .subtitle {
+    width: 71%;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #not-only .wrapper-content .wrapper-content__info .subtitle {
+    text-align: center;
+    width: 97.64%;
+  }
+}
 html body #not-only .wrapper-content .wrapper-content__info .redirect {
   width: 207px;
   height: 52px;
@@ -283,6 +409,12 @@ html body #not-only .wrapper-content .wrapper-content__info .redirect {
   align-items: center;
   justify-content: center;
   transition: 0.3s linear;
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #not-only .wrapper-content .wrapper-content__info .redirect {
+    position: relative;
+    right: 1px;
+  }
 }
 @media (max-width: 767px) and (min-width: 300px) {
   html body #not-only .wrapper-content .wrapper-content__info .redirect {
@@ -322,6 +454,19 @@ html body #about .wrapper-content {
   display: flex;
   justify-content: center;
   padding-bottom: 102px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #about .wrapper-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #about .wrapper-content {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 44px;
+  }
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body #about .wrapper-content {
@@ -395,6 +540,7 @@ html body #about .wrapper-content img {
 html body #our-friends {
   width: 100%;
   background-color: #F6F6F6;
+  position: relative;
 }
 html body #our-friends .wrapper {
   display: flex;
@@ -471,27 +617,114 @@ html body #our-friends .wrapper .slider .slider__next {
     left: 58px;
   }
 }
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__previous,
+  html body #our-friends .wrapper .slider .slider__next {
+    position: absolute;
+    top: 455px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__next {
+    right: 58px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__previous {
+    left: 58px;
+  }
+}
 html body #our-friends .wrapper .slider .slider__previous:hover,
 html body #our-friends .wrapper .slider .slider__next:hover {
   background-color: #fddcc4;
   border: transparent;
   transition: 0.3s linear;
 }
-html body #our-friends .wrapper .slider .slider-item {
+html body #our-friends .wrapper .slider .slider__window {
+  height: 435px;
+  width: 90%;
+  max-width: 1080px;
+  display: flex;
+  overflow: hidden;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider__window {
+    width: 85.3%;
+    max-width: 604px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window {
+    width: 270px;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  position: relative;
+  left: -1080px;
+  width: 1080px;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -84.375vw;
+    width: 84.375vw;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -620px;
+    width: 620px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list {
+    left: -270px;
+    width: 270px;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+  width: 270px;
+  height: 435px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 0 45px;
   background-color: #FAFAFA;
   border-radius: 9px;
   cursor: pointer;
+  transition: 0.3s linear;
+  align-items: center;
 }
 @media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .pets-photo {
-    width: 21.09vw;
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    width: 21.094vw;
+    height: 37.584vw;
+    margin: 0 3.516vw;
   }
 }
-html body #our-friends .wrapper .slider .slider-item .name {
-  margin: 26px 0 30px 0;
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    margin: 0 29px 0 11px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item {
+    margin: 0;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item:hover {
+  background-color: #fff;
+  transition: 0.3s linear;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item img {
+    width: 21.094vw;
+  }
+}
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item h2 {
+  margin: 30px 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 20px;
@@ -499,13 +732,7 @@ html body #our-friends .wrapper .slider .slider-item .name {
   letter-spacing: 0.06em;
   color: #545454;
 }
-@media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .name {
-    font-size: 1.56vw;
-    line-height: 1.8vw;
-  }
-}
-html body #our-friends .wrapper .slider .slider-item .learn-more {
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item button {
   width: 187px;
   height: 52px;
   border: 2px solid #F1CDB3;
@@ -521,44 +748,9 @@ html body #our-friends .wrapper .slider .slider-item .learn-more {
   margin-bottom: 30px;
   transition: 0.3s linear;
 }
-@media (max-width: 1279px) and (min-width: 992px) {
-  html body #our-friends .wrapper .slider .slider-item .learn-more {
-    width: 14.61vw;
-    height: 4.06vw;
-    border-radius: 7.81vw;
-    font-size: 1.33vw;
-  }
-}
-html body #our-friends .wrapper .slider .slider-item .learn-more:hover {
+html body #our-friends .wrapper .slider .slider__window .pets-list .pets-item button:hover {
   background-color: #fddcc4;
   border: transparent;
-  transition: 0.3s linear;
-}
-html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-  margin: 0 36px;
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-    margin: 0 0 0 28px;
-  }
-}
-@media (max-width: 767px) and (min-width: 300px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(3) {
-    display: none;
-  }
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(4) {
-    display: none;
-  }
-}
-@media (max-width: 767px) and (min-width: 300px) {
-  html body #our-friends .wrapper .slider .slider-item:nth-child(4) {
-    display: none;
-  }
-}
-html body #our-friends .wrapper .slider .slider-item:hover {
-  background-color: #fff;
   transition: 0.3s linear;
 }
 html body #our-friends .wrapper .redirect {
@@ -732,6 +924,18 @@ html body #in-addition .wrapper-content {
     align-items: center;
   }
 }
+@media (max-width: 991px) and (min-width: 768px) {
+  html body #in-addition .wrapper-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #in-addition .wrapper-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
 html body #in-addition .wrapper-content .wrapper-content__info {
   width: 31.67%;
   margin: 82px 0 100px 31px;
@@ -815,6 +1019,17 @@ html body #in-addition .wrapper-content .wrapper-content__info .bank-account .ba
 }
 html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number img {
   margin: 10px 15px;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number img {
+    margin: 0.78vw 1.17vw;
+    width: 2.34vw;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number img {
+    width: 10.5%;
+  }
 }
 @media (max-width: 1279px) and (min-width: 992px) {
   html body #in-addition .wrapper-content .wrapper-content__info .bank-account .bank-account__card-number img {
@@ -957,7 +1172,7 @@ html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
 @media (max-width: 767px) and (min-width: 300px) {
   html body footer .wrapper .wrapper-content:nth-child(2) .column-title {
     width: 98%;
-    margin: 0 auto 40px;
+    margin: 40px auto;
   }
 }
 html body footer .wrapper .wrapper-content:nth-child(2) .contacts {
@@ -1020,7 +1235,7 @@ html body footer .wrapper .column-title {
 html body footer .wrapper .contacts {
   display: flex;
   align-items: center;
-  margin: 40px 0;
+  margin: 40px 0 0 0;
   transition: 0.3s linear;
 }
 @media (max-width: 1279px) and (min-width: 992px) {
@@ -1030,7 +1245,7 @@ html body footer .wrapper .contacts {
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body footer .wrapper .contacts {
-    margin: 38px 0;
+    margin: 38px 0 0 0;
   }
 }
 @media (max-width: 767px) and (min-width: 300px) {
@@ -1070,8 +1285,14 @@ html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p
     width: 3.12vw;
   }
 }
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body footer .wrapper .contacts a img, html body footer .wrapper .contacts p img {
+    margin-right: 1.56vw;
+    width: 3.12vw;
+  }
+}
 html body footer .wrapper .contacts:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 0.3s linear;
 }
 html body footer .wrapper .footer__image {
@@ -1085,7 +1306,7 @@ html body footer .wrapper .footer__image {
 }
 @media (max-width: 991px) and (min-width: 768px) {
   html body footer .wrapper .footer__image {
-    margin-top: 28px;
+    margin-top: 65px;
   }
 }
 @media (max-width: 767px) and (min-width: 300px) {
@@ -1098,6 +1319,21 @@ html body footer .wrapper .footer__image {
 html body .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html body .wrapper {
+    width: 93%;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html body .wrapper {
+    width: 92.188vw;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html body .wrapper {
+    width: 93.75vw;
+  }
 }
 @media (max-width: 1279px) and (min-width: 992px) {
   html body .wrapper {
@@ -1137,6 +1373,328 @@ html body .section-title {
 }
 html body a {
   text-decoration: none;
+}
+html .pets-info {
+  visibility: hidden;
+}
+html .pets-info.active {
+  visibility: visible;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(41, 41, 41, 0.6);
+  transition: 0.3s linear;
+}
+html .pets-info.active .wrapper-pets-info {
+  width: 952px;
+  max-width: 952px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 auto;
+  position: relative;
+  top: 15.6%;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info {
+    width: 682px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info {
+    width: 270px;
+  }
+}
+html .pets-info.active .wrapper-pets-info .close-button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #F1CDB3;
+  background-color: transparent;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+html .pets-info.active .wrapper-pets-info .close-button .cross {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+}
+html .pets-info.active .wrapper-pets-info .close-button .cross::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  transform: rotate(45deg);
+  top: 44%;
+  left: 0;
+  border-radius: 2px;
+}
+html .pets-info.active .wrapper-pets-info .close-button .cross::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  transform: rotate(-45deg);
+  top: 44%;
+  left: 0;
+  border-radius: 2px;
+}
+html .pets-info.active .wrapper-pets-info .close-button:hover {
+  background-color: #F1CDB3;
+  transition: 0.3s linear;
+  transform: rotate(90deg);
+}
+html .pets-info.active .wrapper-pets-info .modal-window {
+  width: 900px;
+  background-color: white;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  border-radius: 9px;
+  overflow: hidden;
+  justify-content: space-between;
+  transition: 0.3s linear;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info .modal-window {
+    width: 630px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window {
+    width: 240px;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window img {
+  width: 55.6%;
+  object-fit: contain;
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window img {
+    display: none;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description {
+  width: 351px;
+  margin: 50px 20px 0 0;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description {
+    width: 260px;
+    margin: 10px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description {
+    width: 220px;
+    margin: 10px;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description .pets-name {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description .pets-name {
+    text-align: center;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description .animal {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  margin-bottom: 40px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description .animal {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description .animal {
+    margin-bottom: 20px;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description .animal-story {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  margin-bottom: 40px;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description .animal-story {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description .animal-story {
+    font-size: 13px;
+    margin-bottom: 24px;
+    text-align: justify;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description ul {
+  margin-left: 14px;
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description ul li {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  margin-bottom: 11px;
+  list-style: none;
+  position: relative;
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description ul li {
+    margin-bottom: 5px;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .pets-info.active .wrapper-pets-info .modal-window .description ul li {
+    margin-bottom: 5px;
+  }
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description ul li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #F1CDB3;
+  top: 4px;
+  left: -13px;
+}
+html .pets-info.active .wrapper-pets-info .modal-window .description ul li span {
+  font-weight: 600;
+}
+@keyframes move-right {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: -2160px;
+  }
+}
+@keyframes move-right-laptop {
+  from {
+    left: -84.375vw;
+  }
+  to {
+    left: -168.75vw;
+  }
+}
+@keyframes move-right-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: -1240px;
+  }
+}
+@keyframes move-right-phone {
+  from {
+    left: -270px;
+  }
+  to {
+    left: -540px;
+  }
+}
+@keyframes move-left {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes move-left-laptop {
+  from {
+    left: -84.375vw;
+  }
+  to {
+    left: 0vw;
+  }
+}
+@keyframes move-left-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes move-left-phone {
+  from {
+    left: -270px;
+  }
+  to {
+    left: 0px;
+  }
+}
+html .transition-right {
+  animation-name: move-right;
+  animation-duration: 3s;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html .transition-right {
+    animation-name: move-right-laptop;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .transition-right {
+    animation-name: move-right-tablet;
+    animation-duration: 2s;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .transition-right {
+    animation-name: move-right-phone;
+    animation-duration: 1s;
+  }
+}
+html .transition-left {
+  animation-name: move-left;
+  animation-duration: 3s;
+}
+@media (max-width: 1279px) and (min-width: 992px) {
+  html .transition-left {
+    animation-name: move-left-laptop;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  html .transition-left {
+    animation-name: move-left-tablet;
+    animation-duration: 2s;
+  }
+}
+@media (max-width: 767px) and (min-width: 300px) {
+  html .transition-left {
+    animation-name: move-left-phone;
+    animation-duration: 1s;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
