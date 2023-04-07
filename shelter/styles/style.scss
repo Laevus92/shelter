@@ -43,10 +43,25 @@ html {
                     width: 93.43%;
                     margin: 0 0 0 10px;                         
                 }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 93.33%;                         
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 93.43%;
+                    margin: 0 0 0 10px;                         
+                }
 
                 nav {
                     width: 36.92%;
                     max-width: 443px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        width: 62.69%;
+                        position: relative;
+                        bottom: 1.6px;                           
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        display: none;;                         
+                    }
                     @media (max-width:991px) and (min-width: 768px) {
                         width: 62.69%;
                         position: relative;
@@ -66,6 +81,9 @@ html {
                         @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 1.17vw;                           
                         }
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 1.17vw;                           
+                        }
                     
                         .nav-item__current {
                             list-style-type: none;
@@ -81,6 +99,9 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
+                            @media (max-width:991px) and (min-width: 768px) {
+                                top: 24px;                          
+                            }
                             @media (max-width:991px) and (min-width: 768px) {
                                 top: 24px;                          
                             }
@@ -112,6 +133,10 @@ html {
                             @media (max-width: 1279px) and (min-width: 992px) {
                                 top: 1.72vw;                           
                             }
+
+                            @media (max-width: 1279px) and (min-width: 992px) {
+                                top: 1.72vw;                           
+                            }
                         }
                     }
                 }
@@ -128,6 +153,11 @@ html {
                         line-height: 35.2px;
                         letter-spacing: 0.06em;
                         margin-bottom: 5px;
+
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 2.5vw;  
+                            line-height: 2.73vw;                         
+                        }
 
                         @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 2.5vw;  
@@ -331,6 +361,18 @@ html {
                             width: 97.64%;                    
                         }
                         
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 1.17vw;  
+                            line-height: 1.88vw;                         
+                        }
+                        @media (max-width:991px) and (min-width: 768px) {
+                            width: 71%;
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            text-align: center;
+                            width: 97.64%;                    
+                        }
+                        
                     }
 
                     .redirect {
@@ -350,6 +392,12 @@ html {
                     align-items: center;
                     justify-content: center;
                     transition: .3s linear;
+                    @media (max-width:991px) and (min-width: 768px) {                      
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        position: relative;
+                        right: 1px;                      
+                    }
                     @media (max-width:991px) and (min-width: 768px) {                      
                     }
                     @media (max-width:767px) and (min-width: 300px) {
@@ -390,6 +438,16 @@ html {
                 display: flex;
                 justify-content: center;
                 padding-bottom: 102px;
+                @media (max-width:991px) and (min-width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                   
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    padding-bottom: 44px;                          
+                }
+                
                 @media (max-width:991px) and (min-width: 768px) {
                     flex-direction: column-reverse;
                     align-items: center;                   
@@ -502,6 +560,22 @@ html {
                         align-items: center;
                         justify-content: center;
                         transition: .3s linear;
+                        @media (max-width:767px) and (min-width: 300px) {
+                            position: absolute;
+                            top: 455px;
+                        }
+                    } 
+                    
+                    .slider__next {
+                        @media (max-width:767px) and (min-width: 300px) {
+                            right: 58px;
+                        }
+                    }
+                    .slider__previous {
+                        @media (max-width:767px) and (min-width: 300px) {
+                            left: 58px;
+                        }
+                    }
                         @media (max-width:767px) and (min-width: 300px) {
                             position: absolute;
                             top: 455px;
@@ -778,6 +852,14 @@ html {
                     flex-direction: column-reverse;
                     align-items: center;                         
                 } 
+                @media (max-width:991px) and (min-width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;               
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                         
+                } 
                 .wrapper-content__info {
                     width: 31.67%;
                     margin: 82px 0 100px 31px;
@@ -844,6 +926,13 @@ html {
                             
                             img {
                                 margin: 10px 15px;
+                                @media (max-width: 1279px) and (min-width: 992px) {
+                                    margin: 0.78vw 1.17vw;
+                                    width: 2.34vw;                    
+                                }
+                                @media (max-width:767px) and (min-width: 300px) {
+                                    width: 10.5%;                         
+                                }
                                 @media (max-width: 1279px) and (min-width: 992px) {
                                     margin: 0.78vw 1.17vw;
                                     width: 2.34vw;                    
@@ -1053,6 +1142,10 @@ html {
                                 margin-right: 1.56vw; 
                                 width: 3.12vw;                 
                             }
+                            @media (max-width: 1279px) and (min-width: 992px) {
+                                margin-right: 1.56vw; 
+                                width: 3.12vw;                 
+                            }
                         }
                     }
                 }
@@ -1081,6 +1174,15 @@ html {
         .wrapper{
             max-width: 1200px;
             margin: 0 auto;
+            @media (max-width: 1279px) and (min-width: 992px) {
+                width: 93%;                        
+            }
+            @media (max-width:991px) and (min-width: 768px) {
+                width: 92.188vw;                         
+            }
+            @media (max-width:767px) and (min-width: 300px) {
+                width: 93.750vw;                         
+            }
             @media (max-width: 1279px) and (min-width: 992px) {
                 width: 93%;                        
             }
