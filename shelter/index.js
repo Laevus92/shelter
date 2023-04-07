@@ -176,7 +176,7 @@ petsLists[0].addEventListener('animationend', (animation) => {
     previousButton.addEventListener('click', moveLeft);
     nextButton.addEventListener('click', moveRight);
     learnMoreBTN = document.querySelectorAll('.pets-item')
-    learMore()
+    learnMore()
 })
 
 let petsArray = [];
@@ -294,7 +294,7 @@ breakLaptop.addEventListener('change', () => {
         }
     }
     learnMoreBTN = document.querySelectorAll('.pets-item')
-    learMore()
+    learnMore()
 })
 
 breakTablet.addEventListener('change', () => {
@@ -308,7 +308,7 @@ breakTablet.addEventListener('change', () => {
         }
     }
     learnMoreBTN = document.querySelectorAll('.pets-item')
-    learMore()
+    learnMore()
 })
 
 breakPhone.addEventListener('change', () => {
@@ -320,7 +320,7 @@ breakPhone.addEventListener('change', () => {
         creatingCards(currentList, 'center')
     }
     learnMoreBTN = document.querySelectorAll('.pets-item')
-    learMore()
+    learnMore()
 })
 
 let learnMoreBTN = document.querySelectorAll('.pets-item');
@@ -328,7 +328,7 @@ let popUpInfo = document.querySelector('.pets-info');
 let closeBTN = document.querySelector('.close-button');
 const modalWindow = document.querySelector('.modal-window');
 
-function learMore() {
+function learnMore() {
     learnMoreBTN.forEach(button => button.addEventListener('click', (target) => {
     document.getElementById('our-friends').scrollIntoView()
     popUpInfo.classList.add('active')
@@ -343,7 +343,7 @@ function learMore() {
 
     let petsPhoto = document.createElement('img');
     getPetsData('img').then(result => {
-        petsPhoto.setAttribute('src', `${result}`);
+        petsPhoto.setAttribute('src', result);
     }).catch(error => {
         console.error(error);
     })
@@ -421,7 +421,7 @@ function learMore() {
     inoculations.innerHTML = '<span>Inoculations: </span>';
 
     getPetsData('inoculations').then(result => {
-        inoculations.innerHTML = inoculations.innerHTML + result;
+        inoculations.innerHTML = inoculations.innerHTML + result.join(', ');
     }).catch(error => {
         console.error(error);
     })
@@ -432,7 +432,7 @@ function learMore() {
     diseases.innerHTML = '<span>Diseases: </span>';
 
     getPetsData('diseases').then(result => {
-        diseases.innerHTML = diseases.innerHTML + result;
+        diseases.innerHTML = diseases.innerHTML + result.join(', ');
     }).catch(error => {
         console.error(error);
     })
@@ -443,7 +443,7 @@ function learMore() {
     parasites.innerHTML = '<span>Parasites: </span>';
 
     getPetsData('parasites').then(result => {
-        parasites.innerHTML = parasites.innerHTML + result;
+        parasites.innerHTML = parasites.innerHTML + result.join(', ');
     }).catch(error => {
         console.error(error);
     })
@@ -453,7 +453,7 @@ function learMore() {
 }))
 }
 
-learMore();
+learnMore();
 
 closeBTN.addEventListener('click', () => {
     popUpInfo.classList.remove('active')

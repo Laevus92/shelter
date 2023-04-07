@@ -158,6 +158,7 @@ function createFirstPage() {
             createCard(+wholePetsArray[i]);
         }
     }
+    learnMore();
 }
 
 createFirstPage()
@@ -218,6 +219,7 @@ function nextPage() {
         lastPageBTN.classList.remove('active');
         lastPageBTN.classList.add('unactive');
     }
+    learnMore()
 }
 
 function previousPage() {
@@ -253,7 +255,7 @@ function previousPage() {
         firstPageBTN.classList.remove('active');
         firstPageBTN.classList.add('unactive');
     }
-    console.log(wholePetsArray.slice(visibleCards * counter, ((visibleCards * counter)+ visibleCards)), counter)
+    learnMore()
 }
 
 function moveTofirstPage() {
@@ -285,6 +287,7 @@ function moveTofirstPage() {
             createCard(wholePetsArray.slice(visibleCards * counter, ((visibleCards * counter)+ visibleCards))[i]);
         }
     }
+    learnMore()
 }
 
 function moveTolastPage() {
@@ -316,6 +319,7 @@ function moveTolastPage() {
             createCard(wholePetsArray.slice(visibleCards * counter, ((visibleCards * counter)+ visibleCards))[i]);
         }
     }
+    learnMore()
 }
 
 nextPageBTN.addEventListener('click', nextPage)
@@ -327,22 +331,177 @@ const breakPhone = window.matchMedia('(max-width:767px) and (min-width: 300px)')
 
 
 breakLaptop.addEventListener('change', () => {
-    if (breakLaptop.matches === true) {
-        checkVisibleCards()
-        moveTofirstPage()
-    }
+    popUpInfo.classList.remove('active')
+    document.querySelector('html').style.overflow = 'unset'
+    modalWindow.innerHTML = ''
+    petsList.innerHTML = ''
+    checkVisibleCards()
+    moveTofirstPage()
+    learnMore()
 })
 
 breakTablet.addEventListener('change', () => {
-    if ( breakTablet.matches === true) {
-        checkVisibleCards()
-        moveTofirstPage()
-    }
+    popUpInfo.classList.remove('active')
+    document.querySelector('html').style.overflow = 'unset'
+    modalWindow.innerHTML = ''
+    petsList.innerHTML = ''
+    checkVisibleCards()
+    moveTofirstPage()
+    learnMore()
 })
 
 breakPhone.addEventListener('change', () => {
-    if (breakPhone.matches === true) {
-        checkVisibleCards()
-        moveTofirstPage()
+    popUpInfo.classList.remove('active')
+    document.querySelector('html').style.overflow = 'unset'
+    modalWindow.innerHTML = ''
+    petsList.innerHTML = ''
+    checkVisibleCards()
+    moveTofirstPage()
+    learnMore()
+})
+
+let popUpInfo = document.querySelector('.pets-info');
+let closeBTN = document.querySelector('.close-button');
+const modalWindow = document.querySelector('.modal-window');
+
+function learnMore() {
+    let learnMoreBTN = document.querySelectorAll('.pets-list__item')
+    learnMoreBTN.forEach(button => button.addEventListener('click', (target) => {
+    document.getElementById('our-friends').scrollIntoView()
+    popUpInfo.classList.add('active')
+    modalWindow.innerHTML = ''
+    document.querySelector('html').style.overflow = 'hidden'
+    let cardNumber = target.target.closest('div').lastChild.getAttribute('value')
+    async function getPetsData(key) {
+        const url = '../../pets.json';
+        const res = await fetch (url);
+        const data = await res.json();
+        return data[cardNumber][key]
+    }
+
+    let petsPhoto = document.createElement('img');
+    getPetsData('img').then(result => {
+        petsPhoto.setAttribute('src', `../.${result}`);
+    }).catch(error => {
+        console.error(error);
+    })
+
+    getPetsData('name').then(result => {
+        petsPhoto.setAttribute('alt', `${result}.jpg`);
+    }).catch(error => {
+        console.error(error);
+    })
+    modalWindow.append(petsPhoto)
+
+    let petsInfo = document.createElement('div');
+    petsInfo.classList.add('description');
+    modalWindow.append(petsInfo);
+
+    petsInfo = document.querySelector('.description')
+
+    let petsName = document.createElement('h2');
+    petsName.classList.add('pets-name');
+
+    getPetsData('name').then(result => {
+        petsName.innerHTML = result;
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsInfo.append(petsName);
+
+    let animal = document.createElement('p');
+    animal.classList.add('animal');
+
+    getPetsData('type').then(result => {
+        animal.innerHTML = `${result}-`;
+    }).catch(error => {
+        console.error(error);
+    })
+
+    getPetsData('breed').then(result => {
+        animal.innerHTML = animal.innerHTML + result;
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsInfo.append(animal);
+
+    let animalStory = document.createElement('p');
+    animalStory.classList.add('animal-story');
+
+    getPetsData('description').then(result => {
+        animalStory.innerHTML = result;
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsInfo.append(animalStory);
+
+    let petsFeaturesList = document.createElement('ul');
+    petsFeaturesList.classList.add('animal-features-list');
+    petsInfo.append(petsFeaturesList);
+
+    petsFeaturesList = document.querySelector('.animal-features-list');
+
+    let age = document.createElement('li');
+    age.innerHTML = '<span>Age: </span>';
+
+    getPetsData('age').then(result => {
+        age.innerHTML = age.innerHTML + result;
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsFeaturesList.append(age)
+
+    let inoculations = document.createElement('li');
+    inoculations.innerHTML = '<span>Inoculations: </span>';
+
+    getPetsData('inoculations').then(result => {
+        inoculations.innerHTML = inoculations.innerHTML + result.join(', ');
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsFeaturesList.append(inoculations)
+
+    let diseases = document.createElement('li');
+    diseases.innerHTML = '<span>Diseases: </span>';
+
+    getPetsData('diseases').then(result => {
+        diseases.innerHTML = diseases.innerHTML + result.join(', ');
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsFeaturesList.append(diseases)
+
+    let parasites = document.createElement('li');
+    parasites.innerHTML = '<span>Parasites: </span>';
+
+    getPetsData('parasites').then(result => {
+        parasites.innerHTML = parasites.innerHTML + result.join(', ');
+    }).catch(error => {
+        console.error(error);
+    })
+
+    petsFeaturesList.append(parasites)
+
+}))
+}
+
+closeBTN.addEventListener('click', () => {
+    popUpInfo.classList.remove('active')
+    document.querySelector('html').style.overflow = 'unset'
+    modalWindow.innerHTML = ''
+})
+
+const popUpInfoBackground = document.querySelector('.pets-info')
+popUpInfoBackground.addEventListener('click', (click) => {
+    if(click.target === popUpInfoBackground) {
+        popUpInfo.classList.remove('active')
+        document.querySelector('html').style.overflow = 'unset'
+        modalWindow.innerHTML = ''
     }
 })

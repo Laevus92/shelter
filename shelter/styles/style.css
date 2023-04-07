@@ -1239,7 +1239,7 @@ html .pets-info {
 html .pets-info.active {
   visibility: visible;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -1443,8 +1443,8 @@ html .pets-info.active .wrapper-pets-info .modal-window .description ul li::befo
   border-radius: 50%;
   position: absolute;
   background-color: #F1CDB3;
-  top: 28%;
-  left: -4%;
+  top: 4px;
+  left: -13px;
 }
 html .pets-info.active .wrapper-pets-info .modal-window .description ul li span {
   font-weight: 600;

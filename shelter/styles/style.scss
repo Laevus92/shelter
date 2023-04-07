@@ -1122,7 +1122,7 @@ html {
    .pets-info.active{
     visibility: visible;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -1298,8 +1298,8 @@ html {
                             border-radius: 50%;
                             position: absolute;
                             background-color: $color-primary;
-                            top: 28%;
-                            left: -4%;
+                            top: 4px;
+                            left: -13px;
                         }
                         span {
                             font-weight: 600;
