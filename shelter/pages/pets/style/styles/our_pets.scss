@@ -11,12 +11,12 @@ $x2-dark-font: #545454;
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     
     body {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-
 
         *{
             box-sizing: border-box;
@@ -116,6 +116,8 @@ html {
                     height: 22px;
                     border-top: 2px solid black;
                     border-bottom: 2px solid black;
+                    transition: .2s linear;
+                    cursor: pointer;
                     &::before {
                         content: '';
                         display: block;
@@ -127,7 +129,77 @@ html {
                     }
                     display: none;
                     @media (max-width:767px) and (min-width: 300px) {
-                        display: block;                         
+                        display: block;
+                        z-index: 2;                         
+                    }
+                }
+
+                .pop-up-background {
+                    position: absolute;
+                    display: flex;
+                    top: 0;
+                    left: 0;
+                    background: #29292960;
+                    width: 100vw;
+                    height: 100vh;
+                    z-index: 1;
+                    flex-direction: row-reverse;
+                    visibility: hidden;
+                    overflow: hidden;
+
+                    .pop-up-menu {
+                        width: 320px;
+                        height: 100vh;
+                        background: #636363;
+                        position: absolute;
+                        right: -320px;
+                        transition: .2s linear;
+                        z-index: 2;
+
+                        &.active {
+                            right: 0px;
+                            transition: .2s linear;
+                        }
+
+                        .nav-list {
+                            margin-top: 228px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            
+                            li {
+                                list-style: none;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 32px;
+                                line-height: 51.2px;
+                                text-align: center;
+                                margin: 20px auto ;
+                                cursor: pointer;
+    
+                                a {
+                                    text-decoration: none;
+                                    color: $normal-color-link;
+                                }                            
+                            }
+    
+                            .nav-item__current {
+                                color: $hover-and-active-color-link;
+                                position: relative;
+                                &::after{
+                                    content: '';
+                                    width: 100%;
+                                    height: 3px;
+                                    background: $color-primary;
+                                    position: absolute;
+                                    top: 55px;
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.active {
+                        visibility: visible;
                     }
                 }
 
@@ -172,23 +244,30 @@ html {
             
             #our-friends {
                 background-color: $grey-bg;
+                position: relative;
     
                 .wrapper {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    position: relative;
     
                     .pets-list {
                         display: flex;
                         justify-content: space-between;
                         width: 100%;
                         flex-wrap: wrap;
+                        height: 922px;
+                        align-items: center;
+                        align-content: center;
                         @media (max-width:991px) and (min-width: 768px) {
-                            width: 82%;                        
+                            width: 82%;
+                            height: 1383px;                        
                         }              
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 90%;
-                            justify-content: space-evenly;                       
+                            justify-content: space-evenly;  
+                            height: 1383px;                     
                         }          
         
                         .pets-list__item {
@@ -200,22 +279,7 @@ html {
                             cursor: pointer;
                             transition: .3s linear;
                             margin: 0 0 30px 0;
-                            @media (max-width:991px) and (min-width: 768px) {
-                                &:nth-child(8),
-                                &:nth-child(7) {
-                                    display: none;
-                                }                          
-                            }
-                            @media (max-width:767px) and (min-width: 300px) {
-                                &:nth-child(4),
-                                &:nth-child(5),
-                                &:nth-child(6),
-                                &:nth-child(7),
-                                &:nth-child(8) {
-                                    display: none;
-                                }                                                         
-                            }
-                            
+                            transition: 0.7s linear;                   
                             
                             img {
                                 @media (max-width: 1279px) and (min-width: 992px) {
@@ -270,6 +334,7 @@ html {
                         .pets-list__item:hover {
                             background-color: $white-bg;
                             transition: .3s linear;
+                            box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
                         }
                     }
                     .pets-list:nth-child(3) {
@@ -320,11 +385,10 @@ html {
                                 line-height: 1.797vw;
                             }                            
                         }
-    
-                        .nav-panel__buttons:nth-child(1),
-                        .nav-panel__buttons:nth-child(2){
+                        .nav-panel__buttons.unactive{
                             border: 2px solid $normal-color-link;
                             color: $normal-color-link;
+                            cursor: unset;
                         }
     
                         .nav-panel__buttons:nth-child(3){
@@ -333,9 +397,13 @@ html {
                             background-color: $color-primary;
     
                         }
-            
-                        .nav-panel__buttons:nth-child(4):hover,
-                        .nav-panel__buttons:nth-child(5):hover{
+
+                        .nav-panel__buttons.active {
+                            border: 2px solid $color-primary;
+                            color: black;
+                        }
+
+                        .nav-panel__buttons.active:hover{
                             background-color: #fddcc4;
                             border: transparent;
                             transition: .3s linear;
@@ -401,7 +469,7 @@ html {
                         }
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 98%;
-                            margin: 0 auto 40px;
+                            margin: 40px auto;
                         }
 
                     }
@@ -453,13 +521,13 @@ html {
                 .contacts {
                     display: flex;
                     align-items: center;
-                    margin: 40px 0;
+                    margin: 40px 0 0 0;
                     transition: .3s linear;
                     @media (max-width: 1279px) and (min-width: 992px) {
                         margin: 2.50vw 0 0 0;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin: 38px 0;                   
+                        margin: 38px 0 0 0;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                         justify-content: center;                         
@@ -494,7 +562,7 @@ html {
                     }
                 }
                 .contacts:hover{
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                     transition: .3s linear;
                 }
                 .footer__image {
@@ -504,7 +572,7 @@ html {
                         width: 23.44vw;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin-top: 28px;                   
+                        margin-top: 65px;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                        width: 86.8%;
@@ -556,5 +624,202 @@ html {
                 padding: 42px 0 41px 0;                     
             }
         }
+
+        .pets-info{
+            visibility: hidden;
+           }
+        
+           .pets-info.active{
+            visibility: visible;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: 
+            rgba(41, 41, 41, 0.6);
+            transition: .3s linear;
+            .wrapper-pets-info {
+                width: 952px;
+                max-width: 952px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin: 0 auto;
+                position: relative;
+                top: 15.6%;
+                @media (max-width:991px) and (min-width: 768px) {
+                    width: 682px;                        
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 270px;                          
+                }
+        
+                .close-button {
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 50%;
+                    border: 2px solid $color-primary;
+                    background-color: transparent;
+                    transition: .3s linear;
+                    cursor: pointer;
+                    .cross {
+                        position: relative;
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        margin: 0 auto;
+                        &::before {
+                            content: '';
+                            width: 100%;
+                            height: 3px;
+                            background-color: black;
+                            position: absolute;
+                            transform: rotate(45deg);
+                            top: 44%;
+                            left: 0;
+                            border-radius: 2px;
+                        }
+                        &::after {
+                            content: '';
+                            width: 100%;
+                            height: 3px;
+                            background-color: black;
+                            position: absolute;
+                            transform: rotate(-45deg);
+                            top: 44%;
+                            left: 0;
+                            border-radius: 2px;
+                        }
+                    }
+                    &:hover {
+                        background-color: $color-primary;
+                        transition: .3s linear;
+                        transform: rotate(90deg);
+                    }
+                }
+                .modal-window {
+                    width: 900px;
+                    background-color: white;
+                    align-self: flex-start;
+                    display: flex;
+                    flex-direction: row;
+                    border-radius: 9px;
+                    overflow: hidden;
+                    justify-content: space-between;
+                    transition: 0.3s linear;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        width: 630px;                         
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        width: 240px;                          
+                    }
+        
+                    img {
+                        width: 55.6%;
+                        object-fit: contain;
+                        @media (max-width:767px) and (min-width: 300px) {
+                            display: none;                       
+                        }
+                    }
+        
+                    .description {
+                        width: 351px;
+                        margin: 50px 20px 0 0;
+                        @media (max-width:991px) and (min-width: 768px) {
+                            width: 260px; 
+                            margin: 10px;                         
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            width: 220px;
+                            margin: 10px;                       
+                        }
+                        
+                        .pets-name {
+                            font-family: 'Georgia';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 35px;
+                            line-height: 130%;
+                            letter-spacing: 0.06em;
+                            margin-bottom: 10px;
+                            @media (max-width:767px) and (min-width: 300px) {
+                                text-align: center;                     
+                            }
+                        }
+                        .animal {
+                            font-family: 'Georgia';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 20px;
+                            line-height: 115%;
+                            letter-spacing: 0.06em;
+                            margin-bottom: 40px;
+                            @media (max-width:991px) and (min-width: 768px) {
+                                margin-bottom: 20px;
+                                text-align: center;                       
+                            }
+                            @media (max-width:767px) and (min-width: 300px) {
+                                margin-bottom: 20px;                     
+                            }
+                        }
+        
+                        .animal-story {
+                            font-family: 'Georgia';
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 15px;
+                            line-height: 110%;
+                            letter-spacing: 0.06em;
+                            margin-bottom: 40px;
+                            @media (max-width:991px) and (min-width: 768px) {
+                                margin-bottom: 20px; 
+                                font-size: 13px;                      
+                            }
+                            @media (max-width:767px) and (min-width: 300px) {
+                                font-size: 13px;
+                                margin-bottom: 24px;
+                                text-align: justify;                     
+                            }
+                        }
+                        ul {
+                            margin-left: 14px;
+                            li {
+                                font-family: 'Georgia';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 15px;
+                                line-height: 110%;
+                                letter-spacing: 0.06em;
+                                margin-bottom: 11px;
+                                list-style: none;
+                                position: relative;
+                                @media (max-width:991px) and (min-width: 768px) {
+                                    margin-bottom: 5px;                       
+                                }
+                                @media (max-width:767px) and (min-width: 300px) {
+                                    margin-bottom: 5px;                    
+                                }
+                                &::before {
+                                    content: '';
+                                    width: 6px;
+                                    height: 6px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    background-color: $color-primary;
+                                    top: 4px;
+                                    left: -13px;
+                                }
+                                span {
+                                    font-weight: 600;
+                                }
+                            } 
+                        }
+                        
+                    }
+                }
+            }
+           }
    }
 }

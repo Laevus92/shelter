@@ -11,6 +11,7 @@ $x2-dark-font: #545454;
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     
     body {
         box-sizing: border-box;
@@ -42,10 +43,25 @@ html {
                     width: 93.43%;
                     margin: 0 0 0 10px;                         
                 }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 93.33%;                         
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 93.43%;
+                    margin: 0 0 0 10px;                         
+                }
 
                 nav {
                     width: 36.92%;
                     max-width: 443px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        width: 62.69%;
+                        position: relative;
+                        bottom: 1.6px;                           
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        display: none;;                         
+                    }
                     @media (max-width:991px) and (min-width: 768px) {
                         width: 62.69%;
                         position: relative;
@@ -65,6 +81,9 @@ html {
                         @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 1.17vw;                           
                         }
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 1.17vw;                           
+                        }
                     
                         .nav-item__current {
                             list-style-type: none;
@@ -80,6 +99,9 @@ html {
                             position: absolute;
                             left: 0;
                             top: 22px;
+                            @media (max-width:991px) and (min-width: 768px) {
+                                top: 24px;                          
+                            }
                             @media (max-width:991px) and (min-width: 768px) {
                                 top: 24px;                          
                             }
@@ -111,6 +133,10 @@ html {
                             @media (max-width: 1279px) and (min-width: 992px) {
                                 top: 1.72vw;                           
                             }
+
+                            @media (max-width: 1279px) and (min-width: 992px) {
+                                top: 1.72vw;                           
+                            }
                         }
                     }
                 }
@@ -127,6 +153,11 @@ html {
                         line-height: 35.2px;
                         letter-spacing: 0.06em;
                         margin-bottom: 5px;
+
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 2.5vw;  
+                            line-height: 2.73vw;                         
+                        }
 
                         @media (max-width: 1279px) and (min-width: 992px) {
                             font-size: 2.5vw;  
@@ -154,6 +185,8 @@ html {
                     height: 22px;
                     border-top: 2px solid $color-primary;
                     border-bottom: 2px solid $color-primary;
+                    transition: .2s linear;
+                    cursor: pointer;
                     &::before {
                         content: '';
                         display: block;
@@ -165,7 +198,77 @@ html {
                     }
                     display: none;
                     @media (max-width:767px) and (min-width: 300px) {
-                        display: block;                         
+                        display: block;
+                        z-index: 2;                         
+                    }
+                }
+
+                .pop-up-background {
+                    position: absolute;
+                    display: flex;
+                    top: 0;
+                    left: 0;
+                    background: #29292960;
+                    width: 100vw;
+                    height: 100vh;
+                    z-index: 1;
+                    flex-direction: row-reverse;
+                    visibility: hidden;
+                    overflow: hidden;
+
+                    .pop-up-menu {
+                        width: 320px;
+                        height: 100vh;
+                        background: #292929;
+                        position: absolute;
+                        right: -320px;
+                        transition: .2s linear;
+                        z-index: 2;
+
+                        &.active {
+                            right: 0px;
+                            transition: .2s linear;
+                        }
+
+                        .nav-list {
+                            margin-top: 228px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            
+                            li {
+                                list-style: none;
+                                font-family: Arial, Helvetica, sans-serif;
+                                font-size: 32px;
+                                line-height: 51.2px;
+                                text-align: center;
+                                margin: 20px auto ;
+                                cursor: pointer;
+    
+                                a {
+                                    text-decoration: none;
+                                    color: $normal-color-link;
+                                }                            
+                            }
+    
+                            .nav-item__current {
+                                color: $hover-and-active-color-link;
+                                position: relative;
+                                &::after{
+                                    content: '';
+                                    width: 100%;
+                                    height: 3px;
+                                    background: $color-primary;
+                                    position: absolute;
+                                    top: 55px;
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.active {
+                        visibility: visible;
                     }
                 }
 
@@ -258,6 +361,18 @@ html {
                             width: 97.64%;                    
                         }
                         
+                        @media (max-width: 1279px) and (min-width: 992px) {
+                            font-size: 1.17vw;  
+                            line-height: 1.88vw;                         
+                        }
+                        @media (max-width:991px) and (min-width: 768px) {
+                            width: 71%;
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            text-align: center;
+                            width: 97.64%;                    
+                        }
+                        
                     }
 
                     .redirect {
@@ -277,6 +392,12 @@ html {
                     align-items: center;
                     justify-content: center;
                     transition: .3s linear;
+                    @media (max-width:991px) and (min-width: 768px) {                      
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        position: relative;
+                        right: 1px;                      
+                    }
                     @media (max-width:991px) and (min-width: 768px) {                      
                     }
                     @media (max-width:767px) and (min-width: 300px) {
@@ -317,6 +438,16 @@ html {
                 display: flex;
                 justify-content: center;
                 padding-bottom: 102px;
+                @media (max-width:991px) and (min-width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                   
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    padding-bottom: 44px;                          
+                }
+                
                 @media (max-width:991px) and (min-width: 768px) {
                     flex-direction: column-reverse;
                     align-items: center;                   
@@ -379,6 +510,7 @@ html {
         #our-friends {
             width: 100%;
             background-color: $grey-bg;
+            position: relative;
             .wrapper {
                 display: flex;
                 flex-direction: column;
@@ -444,6 +576,22 @@ html {
                             left: 58px;
                         }
                     }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            position: absolute;
+                            top: 455px;
+                        }
+                    } 
+                    
+                    .slider__next {
+                        @media (max-width:767px) and (min-width: 300px) {
+                            right: 58px;
+                        }
+                    }
+                    .slider__previous {
+                        @media (max-width:767px) and (min-width: 300px) {
+                            left: 58px;
+                        }
+                    }
                     
                     .slider__previous:hover,
                     .slider__next:hover{
@@ -452,85 +600,112 @@ html {
                         transition: .3s linear;
                     }
 
-                    .slider-item {
+                    .slider__window {
+                        height: 435px;
+                        width: 90%;
+                        max-width: 1080px;
                         display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        background-color:#FAFAFA;
-                        border-radius: 9px;
-                        cursor: pointer;
-                        .pets-photo{
-                            @media (max-width: 1279px) and (min-width: 992px) {
-                                width: 21.09vw;                         
-                            }
-                        }
-                        .name {
-                            margin: 26px 0 30px 0;
-                            font-family: Georgia, 'Times New Roman', Times, serif;
-                            font-weight: 400;
-                            font-size: 20px;
-                            line-height: 23px;
-                            letter-spacing: 0.06em;
-                            color: $color-title;
-                            @media (max-width: 1279px) and (min-width: 992px) {
-                                font-size: 1.56vw;
-                                line-height: 1.8vw;                        
-                            }
-                        }
-                        .learn-more {
-                            width: 187px;
-                            height: 52px;
-                            border: 2px solid $color-primary;
-                            border-radius: 100px;
-                            font-family: Georgia, 'Times New Roman', Times, serif;
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 17px;
-                            letter-spacing: 0.06em;
-                            color: $dark-font;
-                            background-color: transparent;
-                            cursor: pointer;
-                            margin-bottom: 30px;
-                            transition: .3s linear;
-                            @media (max-width: 1279px) and (min-width: 992px) {
-                                width: 14.61vw;
-                                height: 4.06vw;
-                                border-radius: 7.81vw;
-                                font-size: 1.33vw;                       
-                            }
-                        }
-
-                        .learn-more:hover {
-                            background-color: #fddcc4;
-                            border: transparent;
-                            transition: .3s linear;
-
-                        }
-                    }
-                    .slider-item:nth-child(3) {
-                        margin: 0 36px;
+                        overflow: hidden;
                         @media (max-width:991px) and (min-width: 768px) {
-                            margin: 0 0 0 28px;                   
+                            width: 85.3%;
+                            max-width: 604px;
                         }
                         @media (max-width:767px) and (min-width: 300px) {
-                            display: none;
+                            width: 270px;
                         }
-                    }
 
-                    .slider-item:nth-child(4){
-                        @media (max-width:991px) and (min-width: 768px) {
-                            display: none;                   
-                        }
-                        @media (max-width:767px) and (min-width: 300px) {
-                            display: none;;
-                        }
-                    }
 
-                    .slider-item:hover {
-                        background-color: $white-bg;
-                        transition: .3s linear;
+
+                        .pets-list {
+                            display: flex;
+                            flex-shrink: 0;
+                            justify-content: space-between;
+                            position: relative;
+                            left: -1080px;
+                            width: 1080px;
+                            @media (max-width: 1279px) and (min-width: 992px) {
+                                left: -84.375vw;
+                                width: 84.375vw;
+                            }
+                            @media (max-width:991px) and (min-width: 768px) {
+                                left: -620px;
+                                width: 620px;
+                            }
+                            @media (max-width:767px) and (min-width: 300px) {
+                                left: -270px;
+                                width: 270px;
+                            }
+                            .pets-item {
+                                width: 270px;
+                                height: 435px;
+                                display: flex;
+                                flex-direction: column;
+                                margin: 0 45px;
+                                background-color: $hover-and-active-color-link;
+                                border-radius: 9px;
+                                cursor: pointer;
+                                transition: .3s linear;
+                                align-items: center;
+                                @media (max-width: 1279px) and (min-width: 992px) {
+                                    width: 21.094vw;
+                                    height: 37.584vw;
+                                    margin: 0 3.516vw;
+                                }
+                                @media (max-width:991px) and (min-width: 768px) {
+                                    margin: 0 29px 0 11px;
+                                }
+                                @media (max-width:767px) and (min-width: 300px) {
+                                    margin: 0;
+                                }
+                                &:hover{
+                                    background-color: $white-bg;
+                                    transition: .3s linear;
+                                    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+                                }
+
+                                img {
+                                    @media (max-width: 1279px) and (min-width: 992px) {
+                                        width: 21.094vw
+                                    }
+                                }
+
+                                h2 {
+                                    margin: 30px 0;
+                                    font-family: Georgia, 'Times New Roman', Times, serif;
+                                    font-weight: 400;
+                                    font-size: 20px;
+                                    line-height: 23px;
+                                    letter-spacing: 0.06em;
+                                    color: $color-title;
+                                }
+
+                                button {
+                                    width: 187px;
+                                    height: 52px;
+                                    border: 2px solid $color-primary;
+                                    border-radius: 100px;
+                                    font-family: Georgia, 'Times New Roman', Times, serif;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    font-size: 17px;
+                                    letter-spacing: 0.06em;
+                                    color: $dark-font;
+                                    background-color: transparent;
+                                    cursor: pointer;
+                                    margin-bottom: 30px;
+                                    transition: .3s linear;
+
+                                    &:hover {
+                                        background-color: #fddcc4;
+                                        border: transparent;
+                                        transition: .3s linear;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+
                 .redirect {
                     width: 261px;
                     height: 52px;
@@ -677,6 +852,14 @@ html {
                     flex-direction: column-reverse;
                     align-items: center;                         
                 } 
+                @media (max-width:991px) and (min-width: 768px) {
+                    flex-direction: column-reverse;
+                    align-items: center;               
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    flex-direction: column-reverse;
+                    align-items: center;                         
+                } 
                 .wrapper-content__info {
                     width: 31.67%;
                     margin: 82px 0 100px 31px;
@@ -743,6 +926,13 @@ html {
                             
                             img {
                                 margin: 10px 15px;
+                                @media (max-width: 1279px) and (min-width: 992px) {
+                                    margin: 0.78vw 1.17vw;
+                                    width: 2.34vw;                    
+                                }
+                                @media (max-width:767px) and (min-width: 300px) {
+                                    width: 10.5%;                         
+                                }
                                 @media (max-width: 1279px) and (min-width: 992px) {
                                     margin: 0.78vw 1.17vw;
                                     width: 2.34vw;                    
@@ -863,7 +1053,7 @@ html {
                         }
                         @media (max-width:767px) and (min-width: 300px) {
                             width: 98%;
-                            margin: 0 auto 40px;
+                            margin: 40px auto;
                         }
 
                     }
@@ -915,13 +1105,13 @@ html {
                 .contacts {
                     display: flex;
                     align-items: center;
-                    margin: 40px 0;
+                    margin: 40px 0 0 0;
                     transition: .3s linear;
                     @media (max-width: 1279px) and (min-width: 992px) {
                         margin: 2.50vw 0 0 0;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin: 38px 0;                   
+                        margin: 38px 0 0 0;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                         justify-content: center;                         
@@ -952,11 +1142,15 @@ html {
                                 margin-right: 1.56vw; 
                                 width: 3.12vw;                 
                             }
+                            @media (max-width: 1279px) and (min-width: 992px) {
+                                margin-right: 1.56vw; 
+                                width: 3.12vw;                 
+                            }
                         }
                     }
                 }
                 .contacts:hover{
-                    transform: scale(1.2);
+                    transform: scale(1.1);
                     transition: .3s linear;
                 }
                 .footer__image {
@@ -966,7 +1160,7 @@ html {
                         width: 23.44vw;                  
                     }
                     @media (max-width:991px) and (min-width: 768px) {
-                        margin-top: 28px;                   
+                        margin-top: 65px;                   
                     }
                     @media (max-width:767px) and (min-width: 300px) {
                        width: 86.8%;
@@ -980,6 +1174,15 @@ html {
         .wrapper{
             max-width: 1200px;
             margin: 0 auto;
+            @media (max-width: 1279px) and (min-width: 992px) {
+                width: 93%;                        
+            }
+            @media (max-width:991px) and (min-width: 768px) {
+                width: 92.188vw;                         
+            }
+            @media (max-width:767px) and (min-width: 300px) {
+                width: 93.750vw;                         
+            }
             @media (max-width: 1279px) and (min-width: 992px) {
                 width: 93%;                        
             }
@@ -1012,5 +1215,277 @@ html {
         a {
             text-decoration: none;
         }
+   }
+
+   .pets-info{
+    visibility: hidden;
+   }
+
+   .pets-info.active{
+    visibility: visible;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: 
+    rgba(41, 41, 41, 0.6);
+    transition: .3s linear;
+    .wrapper-pets-info {
+        width: 952px;
+        max-width: 952px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 0 auto;
+        position: relative;
+        top: 15.6%;
+        @media (max-width:991px) and (min-width: 768px) {
+            width: 682px;                        
+        }
+        @media (max-width:767px) and (min-width: 300px) {
+            width: 270px;                          
+        }
+
+        .close-button {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid $color-primary;
+            background-color: transparent;
+            transition: .3s linear;
+            cursor: pointer;
+            .cross {
+                position: relative;
+                display: block;
+                width: 20px;
+                height: 20px;
+                margin: 0 auto;
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    background-color: black;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    top: 44%;
+                    left: 0;
+                    border-radius: 2px;
+                }
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    background-color: black;
+                    position: absolute;
+                    transform: rotate(-45deg);
+                    top: 44%;
+                    left: 0;
+                    border-radius: 2px;
+                }
+            }
+            &:hover {
+                background-color: $color-primary;
+                transition: .3s linear;
+                transform: rotate(90deg);
+            }
+        }
+        .modal-window {
+            width: 900px;
+            background-color: white;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            border-radius: 9px;
+            overflow: hidden;
+            justify-content: space-between;
+            transition: 0.3s linear;
+            @media (max-width:991px) and (min-width: 768px) {
+                width: 630px;                         
+            }
+            @media (max-width:767px) and (min-width: 300px) {
+                width: 240px;                          
+            }
+
+            img {
+                width: 55.6%;
+                object-fit: contain;
+                @media (max-width:767px) and (min-width: 300px) {
+                    display: none;                       
+                }
+            }
+
+            .description {
+                width: 351px;
+                margin: 50px 20px 0 0;
+                @media (max-width:991px) and (min-width: 768px) {
+                    width: 260px; 
+                    margin: 10px;                         
+                }
+                @media (max-width:767px) and (min-width: 300px) {
+                    width: 220px;
+                    margin: 10px;                       
+                }
+                
+                .pets-name {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 35px;
+                    line-height: 130%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 10px;
+                    @media (max-width:767px) and (min-width: 300px) {
+                        text-align: center;                     
+                    }
+                }
+                .animal {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 115%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 40px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        margin-bottom: 20px;
+                        text-align: center;                       
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        margin-bottom: 20px;                     
+                    }
+                }
+
+                .animal-story {
+                    font-family: 'Georgia';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 110%;
+                    letter-spacing: 0.06em;
+                    margin-bottom: 40px;
+                    @media (max-width:991px) and (min-width: 768px) {
+                        margin-bottom: 20px; 
+                        font-size: 13px;                      
+                    }
+                    @media (max-width:767px) and (min-width: 300px) {
+                        font-size: 13px;
+                        margin-bottom: 24px;
+                        text-align: justify;                     
+                    }
+                }
+                ul {
+                    margin-left: 14px;
+                    li {
+                        font-family: 'Georgia';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 15px;
+                        line-height: 110%;
+                        letter-spacing: 0.06em;
+                        margin-bottom: 11px;
+                        list-style: none;
+                        position: relative;
+                        @media (max-width:991px) and (min-width: 768px) {
+                            margin-bottom: 5px;                       
+                        }
+                        @media (max-width:767px) and (min-width: 300px) {
+                            margin-bottom: 5px;                    
+                        }
+                        &::before {
+                            content: '';
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            position: absolute;
+                            background-color: $color-primary;
+                            top: 4px;
+                            left: -13px;
+                        }
+                        span {
+                            font-weight: 600;
+                        }
+                    } 
+                }
+                
+            }
+        }
+    }
+   }
+
+   //animation
+   @keyframes move-right {
+    from {left: -1080px;}
+    to {left: -2160px;}   
+   }
+
+   @keyframes move-right-laptop {
+    from {left: -84.375vw;}
+    to {left: -168.75vw;}   
+   }
+
+   @keyframes move-right-tablet {
+    from {left: -620px;}
+    to {left: -1240px;}   
+   }
+
+   @keyframes move-right-phone {
+    from {left: -270px;}
+    to {left: -540px;}   
+   }
+
+   @keyframes move-left {
+    from {left: -1080px;}
+    to {left: 0px;}   
+   }
+
+   @keyframes move-left-laptop {
+    from {left: -84.375vw;}
+    to {left: 0vw;}   
+   }
+
+   @keyframes move-left-tablet {
+    from {left: -620px;}
+    to {left: 0px;}   
+   }
+
+   @keyframes move-left-phone {
+    from {left: -270px;}
+    to {left: 0px;}   
+   }
+
+   .transition-right {
+    animation-name: move-right;
+    animation-duration: 3s;
+
+    @media (max-width: 1279px) and (min-width: 992px) {
+        animation-name: move-right-laptop;
+    }
+    @media (max-width:991px) and (min-width: 768px) {
+        animation-name: move-right-tablet;
+        animation-duration: 2s;
+    }
+    @media (max-width:767px) and (min-width: 300px) {
+        animation-name: move-right-phone;
+        animation-duration: 1s;
+    }
+   }
+
+   .transition-left {
+    animation-name: move-left;
+    animation-duration: 3s;
+
+    @media (max-width: 1279px) and (min-width: 992px) {
+        animation-name: move-left-laptop;
+    }
+    @media (max-width:991px) and (min-width: 768px) {
+        animation-name: move-left-tablet;
+        animation-duration: 2s;
+    }
+    @media (max-width:767px) and (min-width: 300px) {
+        animation-name: move-left-phone;
+        animation-duration: 1s;
+    }
    }
 }
