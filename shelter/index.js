@@ -22,11 +22,11 @@ burgerButton.addEventListener('click', () => {
         burgerButton.style.transform = 'rotate(0deg)'
     }
 
-    if (document.querySelector("body").style.overflow === '' ||
-        document.querySelector("body").style.overflow === 'unset') {
-        document.querySelector("body").style.overflow = 'hidden';
+    if (document.querySelector("html").style.overflow === '' ||
+        document.querySelector("html").style.overflow === 'unset') {
+        document.querySelector("html").style.overflow = 'hidden';
     } else {
-        document.querySelector("body").style.overflow = 'unset';
+        document.querySelector("html").style.overflow = 'unset';
     }
 })
 
@@ -35,7 +35,7 @@ backgroundMenu.addEventListener('click', (click) => {
         backgroundMenu.classList.remove('active');
         popUpMenu.classList.remove('active');
         burgerButton.style.transform = 'rotate(0deg)';
-        document.querySelector("body").style.overflow = 'unset';
+        document.querySelector("html").style.overflow = 'unset';
     }
 })
 
@@ -46,7 +46,7 @@ navLinks.forEach(link => {
         backgroundMenu.classList.remove('active');
         popUpMenu.classList.remove('active');
         burgerButton.style.transform = 'rotate(0deg)';
-        document.querySelector("body").style.overflow = 'unset';
+        document.querySelector("html").style.overflow = 'unset';
     })
 })
 
