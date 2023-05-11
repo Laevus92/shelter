@@ -1,0 +1,286 @@
+@font-face {
+  font-family: "Righteous", cursive;
+  src: url(/minesweeper/assets/fonts/Righteous-Regular.ttf);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(/minesweeper/assets/img/jpg/digital_styled_camo_pattern_design_1307.jpg);
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.4156862745);
+  background-blend-mode: color;
+  padding-top: 30px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.main {
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+}
+@media (width < 815px) {
+  .main {
+    flex-direction: column-reverse;
+  }
+}
+
+.aside {
+  width: 245px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+@media (width < 815px) {
+  .aside {
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+.players-statistic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 8px solid rgb(55, 102, 55);
+  border-radius: 15px;
+  overflow: hidden;
+}
+@media (width < 815px) {
+  .players-statistic {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.players-statistic__avatar {
+  background-image: url(/minesweeper/assets/img/png/soldier.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 305px;
+  background-position: center;
+}
+@media (width < 815px) {
+  .players-statistic__avatar {
+    display: none;
+  }
+}
+.players-statistic__timer {
+  margin: 5px;
+}
+.players-statistic__steps {
+  margin: 5px;
+}
+.players-statistic__mines {
+  margin: 5px;
+}
+
+.timer {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+}
+.timer__icon {
+  background-image: url(/minesweeper/assets/img/png/chronometer.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+.timer__time-value {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  color: white;
+}
+
+.steps {
+  width: 110px;
+  display: flex;
+  flex-direction: row;
+}
+.steps__icon {
+  background-image: url(/minesweeper/assets/img/png/step.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+.steps__quanuty {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  color: white;
+}
+
+.mines {
+  width: 110px;
+  display: flex;
+  flex-direction: row;
+}
+.mines__icon {
+  background-image: url(/minesweeper/assets/img/png/red-flag.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+.mines__quanuty {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  color: white;
+}
+
+.control-panel {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 8px solid rgb(55, 102, 55);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px 0 0 0;
+}
+@media (width < 815px) {
+  .control-panel {
+    margin: 0;
+  }
+}
+.control-panel__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.control-panel__sound-button {
+  background-image: url(/minesweeper/assets/img/png/sound.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+}
+.control-panel__new-game-button {
+  background-image: url(/minesweeper/assets/img/png/reload.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+}
+.control-panel__record-button {
+  background-image: url(/minesweeper/assets/img/png/trophy.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.level__img {
+  background-image: url(/minesweeper/assets/img/png/hard.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+}
+@media (width < 815px) {
+  .level__img {
+    display: none;
+  }
+}
+.level__selector {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  color: white;
+  background: none;
+  outline: none;
+  text-align: center;
+}
+.level__item {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  color: black;
+}
+.level__input-width {
+  width: 85%;
+  font-family: "Righteous", cursive;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 5px;
+  outline: none;
+  text-align: center;
+  border-radius: 10px;
+  visibility: hidden;
+}
+.level__input-width_active {
+  visibility: visible;
+}
+.level__input-mines {
+  width: 85%;
+  font-family: "Righteous", cursive;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 5px;
+  outline: none;
+  text-align: center;
+  border-radius: 10px;
+  visibility: hidden;
+}
+.level__input-mines_active {
+  visibility: visible;
+}
+.level__button {
+  width: 45%;
+  font-family: "Righteous", cursive;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  background-color: #f29c1f;
+  margin-bottom: 5px;
+  outline: none;
+  border-radius: 10px;
+  visibility: hidden;
+}
+.level__button_active {
+  visibility: visible;
+}
+
+.field {
+  background-image: url(/minesweeper/assets/img/jpg/grass.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  -o-border-image: url(/minesweeper/assets/img/jpg/danger\ tape.jpg) 68/15px round;
+     border-image: url(/minesweeper/assets/img/jpg/danger\ tape.jpg) 68/15px round;
+  padding: 25px;
+  max-width: 800px;
+  max-height: 800px;
+}
+@media (width < 815px) {
+  .field {
+    -o-border-image: none;
+       border-image: none;
+    padding: 0;
+  }
+}
+.field__cell {
+  border: 2px solid black;
+}
