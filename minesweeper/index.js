@@ -1,4 +1,4 @@
-const DIFFICULT = { easy: [100, 10], normal: [225, 25], hard: [625, 99] };
+const difficult = { easy: [100, 10], normal: [225, 25], hard: [625, 99] };
 function createInterface() {
   // create wrapper
   let wrapper = document.createElement('div');
@@ -120,3 +120,69 @@ function createInterface() {
   level.appendChild(okButton);
 }
 createInterface();
+
+let cells = '';
+
+function createField(level = difficult.easy) {
+  const [cellsQuantitty, bombsQuantity] = level;
+  const fieldWith = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
+  const fieldHeight = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
+  let field = document.createElement('div');
+  field.className = 'field';
+  field.style.width = `${fieldWith}vw`;
+  field.style.height = `${fieldHeight}vw`;
+  document.querySelector('main').appendChild(field);
+  field = document.querySelector('.field');
+  document.querySelector('.mines__quanuty').textContent = bombsQuantity;
+  for (let i = 0; i < cellsQuantitty; i += 1) {
+    const cell = document.createElement('div');
+    cell.className = 'field__cell';
+    cell.style.width = `${100 / (Math.sqrt(cellsQuantitty))}%`;
+    cell.style.height = `${100 / (Math.sqrt(cellsQuantitty))}%`;
+    field.appendChild(cell);
+  }
+  cells = document.querySelectorAll('.field__cell field');
+}
+createField();
+
+const levelSelector = document.querySelector('.level__selector');
+levelSelector.addEventListener('change', () => {
+  let field = document.querySelector('.field');
+  const inputWidth = document.querySelector('.level__input-width');
+  const inputMines = document.querySelector('.level__input-mines');
+  const okButton = document.querySelector('.level__button');
+  if (levelSelector.value !== 'custom') {
+    inputWidth.classList.remove('level__input-width_active');
+    inputMines.classList.remove('level__input-mines_active');
+    okButton.classList.remove('level__button_active');
+    if ((field) === null) {
+      createField(difficult[levelSelector.value]);
+    } else {
+      field.remove();
+      createField(difficult[levelSelector.value]);
+    }
+  } else {
+    inputWidth.classList.add('level__input-width_active');
+    inputMines.classList.add('level__input-mines_active');
+    okButton.classList.add('level__button_active');
+    field.remove();
+    okButton.addEventListener('click', () => {
+      if (inputWidth.value !== '' && inputMines.value !== '') {
+        if ((inputWidth.value > 9 && inputWidth.value < 26)
+        && (inputMines.value > 9 && inputMines.value < 100)) {
+          field = document.querySelector('.field');
+          difficult.custom = [inputWidth.value ** 2, parseInt(inputMines.value, 10)];
+          if ((field) === null) {
+            createField(difficult[levelSelector.value]);
+          } else {
+            field.remove();
+            createField(difficult[levelSelector.value]);
+          }
+        } else {
+          // eslint-disable-next-line no-alert
+          alert('Ширина поля должна быть от 10 до 25!\nКоличество мин должно быть от 10 до 99!');
+        }
+      }
+    });
+  }
+});
