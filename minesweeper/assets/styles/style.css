@@ -171,6 +171,7 @@ body {
   background-repeat: no-repeat;
   width: 60px;
   height: 60px;
+  cursor: pointer;
 }
 .control-panel__new-game-button {
   background-image: url(/minesweeper/assets/img/png/reload.png);
@@ -178,6 +179,7 @@ body {
   background-repeat: no-repeat;
   width: 60px;
   height: 60px;
+  cursor: pointer;
 }
 .control-panel__record-button {
   background-image: url(/minesweeper/assets/img/png/trophy.png);
@@ -185,6 +187,7 @@ body {
   background-repeat: no-repeat;
   width: 60px;
   height: 60px;
+  cursor: pointer;
 }
 
 .level {
@@ -282,5 +285,14 @@ body {
   }
 }
 .field__cell {
-  border: 2px solid black;
+  border: 2px solid #2f7f01;
+  text-align: center;
+  color: white;
+  font-family: "Righteous", cursive;
+}
+.field__cell_opened {
+  background-image: url(/minesweeper/assets/img/jpg/ground.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid #47341e;
 }

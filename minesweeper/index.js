@@ -1,4 +1,4 @@
-const difficult = { easy: [100, 10], normal: [225, 25], hard: [625, 99] };
+const DIFFICULT = { easy: [100, 10], normal: [225, 25], hard: [625, 99] };
 function createInterface() {
   // create wrapper
   let wrapper = document.createElement('div');
@@ -121,9 +121,104 @@ function createInterface() {
 }
 createInterface();
 
-let cells = '';
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+function createMatrix(level = DIFFICULT.easy) {
+  const array = [];
+  const indexesBombs = [];
+  const [cellsQuantitty, bombsQuantity] = level;
+  const matrixWidth = Math.sqrt(cellsQuantitty);
+  const matrixHeight = matrixWidth;
 
-function createField(level = difficult.easy) {
+  for (let i = 0; i < bombsQuantity; i += 1) {
+    let number = getRandomNumber(0, cellsQuantitty);
+    if (!indexesBombs.includes(number)) {
+      indexesBombs.push(number);
+    } else {
+      while (indexesBombs.includes(number)) {
+        number = getRandomNumber(0, cellsQuantitty);
+      }
+      indexesBombs.push(number);
+    }
+  }
+  console.log(indexesBombs);
+  for (let i = 0; i < cellsQuantitty; i += 1) {
+    if (indexesBombs.includes(i)) {
+      console.log(indexesBombs.includes(i))
+      array.push('B');
+    } else {
+      array.push(0);
+    }
+  }
+  const matrix = [];
+  for (let i = 0; i < array.length; i += matrixWidth) {
+    matrix.push(array.slice(i, i + matrixWidth));
+  }
+
+  for (let i = 0; i < matrixHeight; i += 1) {
+    for (let j = 0; j < matrixWidth; j += 1) {
+      if (matrix[i][j] === 'B') {
+        if (matrix[i][j - 1] !== undefined) {
+          if (matrix[i][j - 1] !== 'B') {
+            matrix[i][j - 1] += 1;
+          }
+        }
+        if (matrix[i][j + 1] !== undefined) {
+          if (matrix[i][j + 1] !== 'B') {
+            matrix[i][j + 1] += 1;
+          }
+        }
+        if (matrix[i - 1] !== undefined) {
+          if (matrix[i - 1][j] !== undefined) {
+            if (matrix[i - 1][j] !== 'B') {
+              matrix[i - 1][j] += 1;
+            }
+          }
+        }
+        if (matrix[i - 1] !== undefined) {
+          if (matrix[i - 1][j - 1] !== undefined) {
+            if (matrix[i - 1][j - 1] !== 'B') {
+              matrix[i - 1][j - 1] += 1;
+            }
+          }
+        }
+        if (matrix[i - 1] !== undefined) {
+          if (matrix[i - 1][j + 1] !== undefined) {
+            if (matrix[i - 1][j + 1] !== 'B') {
+              matrix[i - 1][j + 1] += 1;
+            }
+          }
+        }
+        if (matrix[i + 1] !== undefined) {
+          if (matrix[i + 1][j] !== undefined) {
+            if (matrix[i + 1][j] !== 'B') {
+              matrix[i + 1][j] += 1;
+            }
+          }
+        }
+        if (matrix[i + 1] !== undefined) {
+          if (matrix[i + 1][j - 1] !== undefined) {
+            if (matrix[i + 1][j - 1] !== 'B') {
+              matrix[i + 1][j - 1] += 1;
+            }
+          }
+        }
+        if (matrix[i + 1] !== undefined) {
+          if (matrix[i + 1][j + 1] !== undefined) {
+            if (matrix[i + 1][j + 1] !== 'B') {
+              matrix[i + 1][j + 1] += 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  console.log(matrix);
+  return matrix;
+}
+
+function createField(level = DIFFICULT.easy) {
   const [cellsQuantitty, bombsQuantity] = level;
   const fieldWith = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
   const fieldHeight = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
@@ -141,8 +236,31 @@ function createField(level = difficult.easy) {
     cell.style.height = `${100 / (Math.sqrt(cellsQuantitty))}%`;
     field.appendChild(cell);
   }
-  cells = document.querySelectorAll('.field__cell field');
+  const cells = document.querySelectorAll('.field__cell');
+  let matrix = createMatrix(level);
+  cells.forEach((cell) => {
+    cell.addEventListener('click', () => {
+      const stringNumber = Math.floor(Array.from(cells).indexOf(cell) / Math.sqrt(cellsQuantitty));
+      const columnNumber = Array.from(cells).indexOf(cell)
+      - (Math.sqrt(cellsQuantitty) * stringNumber);
+      if (Array.from(cells).every((element) => !element.classList.contains('field__cell_opened'))) {
+        while (matrix[stringNumber][columnNumber] === 'B') {
+          matrix = createMatrix(level);
+        }
+        cell.classList.add('field__cell_opened');
+        if (matrix[stringNumber][columnNumber] !== 0 && matrix[stringNumber][columnNumber] !== 'B') {
+          cell.textContent = matrix[stringNumber][columnNumber];
+        }
+      } else {
+        cell.classList.add('field__cell_opened');
+        if (matrix[stringNumber][columnNumber] !== 0) {
+          cell.textContent = matrix[stringNumber][columnNumber];
+        }
+      }
+    });
+  });
 }
+
 createField();
 
 const levelSelector = document.querySelector('.level__selector');
@@ -156,10 +274,10 @@ levelSelector.addEventListener('change', () => {
     inputMines.classList.remove('level__input-mines_active');
     okButton.classList.remove('level__button_active');
     if ((field) === null) {
-      createField(difficult[levelSelector.value]);
+      createField(DIFFICULT[levelSelector.value]);
     } else {
       field.remove();
-      createField(difficult[levelSelector.value]);
+      createField(DIFFICULT[levelSelector.value]);
     }
   } else {
     inputWidth.classList.add('level__input-width_active');
@@ -171,12 +289,12 @@ levelSelector.addEventListener('change', () => {
         if ((inputWidth.value > 9 && inputWidth.value < 26)
         && (inputMines.value > 9 && inputMines.value < 100)) {
           field = document.querySelector('.field');
-          difficult.custom = [inputWidth.value ** 2, parseInt(inputMines.value, 10)];
+          DIFFICULT.custom = [inputWidth.value ** 2, parseInt(inputMines.value, 10)];
           if ((field) === null) {
-            createField(difficult[levelSelector.value]);
+            createField(DIFFICULT[levelSelector.value]);
           } else {
             field.remove();
-            createField(difficult[levelSelector.value]);
+            createField(DIFFICULT[levelSelector.value]);
           }
         } else {
           // eslint-disable-next-line no-alert
