@@ -75,6 +75,7 @@ body {
   width: 100%;
   height: 305px;
   background-position: center;
+  transition: 0.7s linear;
 }
 @media (width < 815px) {
   .players-statistic__avatar {

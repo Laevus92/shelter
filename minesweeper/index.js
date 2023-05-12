@@ -303,7 +303,7 @@ async function createField(level = DIFFICULT.easy) {
       }
     } else if (matrix[stringNumber][columnNumber] === 'B') {
       stopTimer();
-      document.querySelector('players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/rip.png)';
+      document.querySelector('.players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/rip.png)';
       cell.classList.add('field__cell_opened');
       cell.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
       cell.style.backgroundColor = '#47341e';
