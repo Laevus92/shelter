@@ -121,6 +121,13 @@ function createInterface() {
 }
 createInterface();
 
+const stepsQuantity = document.querySelector('.steps__quanuty');
+const timeValue = document.querySelector('.timer__time-value');
+let stepCounter = 0;
+let timerId;
+let timeCounter = 0;
+let timerRunning = false;
+
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -143,10 +150,8 @@ function createMatrix(level = DIFFICULT.easy) {
       indexesBombs.push(number);
     }
   }
-  console.log(indexesBombs);
   for (let i = 0; i < cellsQuantitty; i += 1) {
     if (indexesBombs.includes(i)) {
-      console.log(indexesBombs.includes(i));
       array.push('B');
     } else {
       array.push(0);
@@ -219,7 +224,36 @@ function createMatrix(level = DIFFICULT.easy) {
   return matrix;
 }
 
-function createField(level = DIFFICULT.easy) {
+function countStep() {
+  stepCounter += 1;
+  stepsQuantity.textContent = stepCounter;
+}
+
+function timer() {
+  timeCounter += 1;
+  if (timeCounter < 60) {
+    timeValue.textContent = (`00:${timeCounter < 10 ? `0${timeCounter}` : timeCounter}`);
+  } else {
+    const minutes = Math.floor(timeCounter / 60);
+    const secundes = timeCounter - (minutes * 60);
+    timeValue.textContent = (`${minutes < 10 ? `0${minutes}` : minutes}:${secundes < 10 ? `0${secundes}` : secundes}`);
+  }
+}
+
+function startTimer() {
+  if (timerRunning) {
+    return undefined;
+  }
+  timerRunning = true;
+  timerId = setInterval(timer, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timerId)
+  timerRunning = false;
+}
+
+async function createField(level = DIFFICULT.easy) {
   const [cellsQuantitty, bombsQuantity] = level;
   const fieldWith = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
   const fieldHeight = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
@@ -243,6 +277,7 @@ function createField(level = DIFFICULT.easy) {
     const stringNumber = Math.floor(Array.from(cells).indexOf(cell) / Math.sqrt(cellsQuantitty));
     const columnNumber = Array.from(cells).indexOf(cell)
     - (Math.sqrt(cellsQuantitty) * stringNumber);
+    startTimer()
     if (Array.from(cells).every((element) => !element.classList.contains('field__cell_opened'))) {
       while (matrix[stringNumber][columnNumber] === 'B') {
         matrix = createMatrix(level);
@@ -267,10 +302,11 @@ function createField(level = DIFFICULT.easy) {
         checkCell(cells[Array.from(cells).indexOf(cell) + Math.sqrt(cellsQuantitty)]);
       }
     } else if (matrix[stringNumber][columnNumber] === 'B') {
+      stopTimer();
+      document.querySelector('players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/rip.png)';
       cell.classList.add('field__cell_opened');
       cell.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
       cell.style.backgroundColor = '#47341e';
-
       cells.forEach((allCell) => {
         const allStringNumber = Math.floor(Array.from(cells).indexOf(allCell)
         / Math.sqrt(cellsQuantitty));
@@ -283,6 +319,7 @@ function createField(level = DIFFICULT.easy) {
         }
 
         allCell.classList.add('field__cell_opened');
+        allCell.removeEventListener('click', countStep);
 
         if (matrix[allStringNumber][allColumnNumber] !== 'B' && matrix[allStringNumber][allColumnNumber] !== 0) {
           allCell.textContent = matrix[allStringNumber][allColumnNumber];
@@ -290,11 +327,14 @@ function createField(level = DIFFICULT.easy) {
       });
     }
   }
-
   cells.forEach((cell) => {
     cell.addEventListener('click', (event) => {
       checkCell(event.target);
     });
+  });
+  // init steps counter
+  cells.forEach((cell) => {
+    cell.addEventListener('click', countStep);
   });
 }
 

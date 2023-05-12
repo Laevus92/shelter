@@ -315,6 +315,10 @@ body {
       text-align: center;
       color: white;
       font-family: 'Righteous', cursive;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 			// .field__cell_opened
 
 			&_opened {
