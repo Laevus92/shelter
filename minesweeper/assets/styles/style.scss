@@ -305,11 +305,57 @@ body {
   padding: 25px;
   max-width: 800px;
   max-height: 800px;
+  position: relative;
   @media (width < 815px) {
    border-image: none;
    padding: 0;
  }
 		// .field__cell
+
+      &__result-table {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgb(0 0 0 / 74%);
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         visibility: hidden;
+         transition: .5s linear;
+         z-index: 3;
+         &_active {
+            visibility: visible;
+         }
+      }
+
+      
+
+      &__table-title {
+         color: white;
+         margin: 33% 0 0 0;
+         font-family: 'Righteous', cursive;
+         font-size: 24px;
+      }
+
+      &__table-subtitle {
+         color: white;
+         margin-bottom: 12px;
+         font-family: 'Righteous', cursive;
+         font-size: 14px;
+      }
+
+      &__table-button {
+         background: #ffc107;
+         color: white;
+         font-family: 'Righteous', cursive;
+         font-size: 14px;
+         border: 2px solid black;
+         padding: 3%;
+         border-radius: 10%;
+         cursor: pointer;
+      }
 
 		&__cell {
       border: 2px solid #2f7f01;
@@ -328,5 +374,11 @@ body {
             background-repeat: no-repeat;
             border: 2px solid #47341e;
 			}
+
+         &_marked {
+            background-image: url(/minesweeper/assets/img/png/red-flag.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+         }
 		}
 }

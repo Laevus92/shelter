@@ -224,12 +224,16 @@ function createMatrix(level = DIFFICULT.easy) {
   return matrix;
 }
 
-function countStep() {
-  stepCounter += 1;
-  stepsQuantity.textContent = stepCounter;
+function countStep(cell) {
+  if (!cell.classList.contains('field__cell_opened')) {
+    if (!cell.classList.contains('field__cell_marked')) {
+      stepCounter += 1;
+      stepsQuantity.textContent = stepCounter;
+    }
+  }
 }
 
-function timer() {
+function time() {
   timeCounter += 1;
   if (timeCounter < 60) {
     timeValue.textContent = (`00:${timeCounter < 10 ? `0${timeCounter}` : timeCounter}`);
@@ -242,18 +246,18 @@ function timer() {
 
 function startTimer() {
   if (timerRunning) {
-    return undefined;
+    return;
   }
   timerRunning = true;
-  timerId = setInterval(timer, 1000);
+  timerId = setInterval(time, 1000);
 }
 
 function stopTimer() {
-  clearInterval(timerId)
+  clearInterval(timerId);
   timerRunning = false;
 }
 
-async function createField(level = DIFFICULT.easy) {
+function createField(level = DIFFICULT.easy) {
   const [cellsQuantitty, bombsQuantity] = level;
   const fieldWith = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
   const fieldHeight = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
@@ -263,6 +267,22 @@ async function createField(level = DIFFICULT.easy) {
   field.style.height = `${fieldHeight}vw`;
   document.querySelector('main').appendChild(field);
   field = document.querySelector('.field');
+  let resultTable = document.createElement('div');
+  resultTable.className = 'field__result-table';
+  field.appendChild(resultTable);
+  resultTable = document.querySelector('.field__result-table');
+  let tableTitle = document.createElement('h3');
+  tableTitle.classList = 'field__table-title';
+  resultTable.appendChild(tableTitle);
+  tableTitle = document.querySelector('.field__table-title');
+  let tableSubtitle = document.createElement('p');
+  tableSubtitle.classList = 'field__table-subtitle';
+  resultTable.appendChild(tableSubtitle);
+  tableSubtitle = document.querySelector('.field__table-subtitle');
+  const tableButton = document.createElement('button');
+  tableButton.classList = 'field__table-button';
+  tableButton.textContent = 'Try again!';
+  resultTable.appendChild(tableButton);
   document.querySelector('.mines__quanuty').textContent = bombsQuantity;
   for (let i = 0; i < cellsQuantitty; i += 1) {
     const randomCell = document.createElement('div');
@@ -273,21 +293,35 @@ async function createField(level = DIFFICULT.easy) {
   }
   const cells = document.querySelectorAll('.field__cell');
   let matrix = createMatrix(level);
+  function markCell(cell) {
+    let flagsCount = Number.parseInt(document.querySelector('.mines__quanuty').textContent, 10);
+    if (flagsCount > 0 && !cell.classList.contains('field__cell_marked')) {
+      cell.classList.add('field__cell_marked');
+      flagsCount -= 1;
+      document.querySelector('.mines__quanuty').textContent = flagsCount;
+    } else if (cell.classList.contains('field__cell_marked')) {
+      cell.classList.remove('field__cell_marked');
+      flagsCount += 1;
+      document.querySelector('.mines__quanuty').textContent = flagsCount;
+    }
+  }
   function checkCell(cell) {
     const stringNumber = Math.floor(Array.from(cells).indexOf(cell) / Math.sqrt(cellsQuantitty));
     const columnNumber = Array.from(cells).indexOf(cell)
     - (Math.sqrt(cellsQuantitty) * stringNumber);
-    startTimer()
-    if (Array.from(cells).every((element) => !element.classList.contains('field__cell_opened'))) {
+    startTimer();
+    if (Array.from(cells).every((element) => !element.classList.contains('field__cell_opened'))
+    && !cell.classList.contains('field__cell_marked')) {
       while (matrix[stringNumber][columnNumber] === 'B') {
         matrix = createMatrix(level);
       }
     }
     if (matrix[stringNumber][columnNumber] !== 0 && matrix[stringNumber][columnNumber]
-      !== 'B' && matrix[stringNumber][columnNumber] !== undefined) {
+      !== 'B' && matrix[stringNumber][columnNumber] !== undefined && !cell.classList.contains('field__cell_marked')) {
       cell.classList.add('field__cell_opened');
       cell.textContent = matrix[stringNumber][columnNumber];
-    } else if (matrix[stringNumber][columnNumber] === 0 && !cell.classList.contains('field__cell_opened')) {
+    } else if (matrix[stringNumber][columnNumber] === 0 && !cell.classList.contains('field__cell_opened')
+    && !cell.classList.contains('field__cell_marked')) {
       cell.classList.add('field__cell_opened');
       if (columnNumber > 0) {
         checkCell(cells[Array.from(cells).indexOf(cell) - 1]);
@@ -301,8 +335,11 @@ async function createField(level = DIFFICULT.easy) {
       if (stringNumber < Math.sqrt(cellsQuantitty) - 1) {
         checkCell(cells[Array.from(cells).indexOf(cell) + Math.sqrt(cellsQuantitty)]);
       }
-    } else if (matrix[stringNumber][columnNumber] === 'B') {
+    } else if (matrix[stringNumber][columnNumber] === 'B' && !cell.classList.contains('field__cell_marked')) {
       stopTimer();
+      resultTable.classList.add('field__result-table_active');
+      tableTitle.textContent =  'YOU LOOSE!';
+      tableSubtitle.textContent = `time: ${document.querySelector('.timer__time-value').textContent} steps: ${document.querySelector('.steps__quanuty').textContent}`
       document.querySelector('.players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/rip.png)';
       cell.classList.add('field__cell_opened');
       cell.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
@@ -319,6 +356,7 @@ async function createField(level = DIFFICULT.easy) {
         }
 
         allCell.classList.add('field__cell_opened');
+        allCell.classList.remove('field__cell_marked');
         allCell.removeEventListener('click', countStep);
 
         if (matrix[allStringNumber][allColumnNumber] !== 'B' && matrix[allStringNumber][allColumnNumber] !== 0) {
@@ -327,14 +365,24 @@ async function createField(level = DIFFICULT.easy) {
       });
     }
   }
+  // init steps counter
+  cells.forEach((cell) => {
+    cell.addEventListener('click', (event) => {
+      countStep(event.target);
+    });
+  });
+  // check cell
   cells.forEach((cell) => {
     cell.addEventListener('click', (event) => {
       checkCell(event.target);
     });
   });
-  // init steps counter
+
   cells.forEach((cell) => {
-    cell.addEventListener('click', countStep);
+    cell.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+      markCell(event.target);
+    });
   });
 }
 
