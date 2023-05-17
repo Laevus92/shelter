@@ -128,6 +128,13 @@ let timerId;
 let timeCounter = 0;
 let timerRunning = false;
 let isWinID = '';
+const clickSound = new Audio('/minesweeper/assets/sounds/open_cell.mp3');
+const looseSound = new Audio('/minesweeper/assets/sounds/explosion.mp3');
+const winSound = new Audio('/minesweeper/assets/sounds/yahoo.mp3');
+const markSound = new Audio('/minesweeper/assets/sounds/hit.mp3');
+const unmarkSound = new Audio('/minesweeper/assets/sounds/unmark.mp3');
+const newGameSound = new Audio('/minesweeper/assets/sounds/new-game.mp3');
+let mute = false;
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -290,6 +297,12 @@ function switchNumberColor(element) {
   }
 }
 
+function playSound(sound, volume) {
+  if (volume === false) {
+    sound.play();
+  }
+}
+
 function createField(level = DIFFICULT.easy) {
   const [cellsQuantity, bombsQuantity] = level;
   const fieldWith = Math.sqrt(cellsQuantity) * (40 * (100 / 1280));
@@ -363,6 +376,7 @@ function createField(level = DIFFICULT.easy) {
       tableTitle.textContent = 'YOU WIN!';
       tableSubtitle.textContent = `time: ${document.querySelector('.timer__time-value').textContent} steps: ${document.querySelector('.steps__quanuty').textContent}`;
       clearInterval(isWinID);
+      playSound(winSound, mute);
       showBombs();
     }
   }
@@ -373,10 +387,12 @@ function createField(level = DIFFICULT.easy) {
       cell.classList.add('field__cell_marked');
       flagsCount -= 1;
       document.querySelector('.mines__quanuty').textContent = flagsCount;
+      playSound(markSound, mute);
     } else if (cell.classList.contains('field__cell_marked')) {
       cell.classList.remove('field__cell_marked');
       flagsCount += 1;
       document.querySelector('.mines__quanuty').textContent = flagsCount;
+      playSound(unmarkSound, mute);
     }
   }
   function checkCell(cell) {
@@ -396,6 +412,7 @@ function createField(level = DIFFICULT.easy) {
       cell.classList.add('field__cell_opened');
       cellStyle.textContent = matrix[stringNumber][columnNumber];
       switchNumberColor(cell);
+      playSound(clickSound, mute);
     } else if (matrix[stringNumber][columnNumber] === 0 && !cell.classList.contains('field__cell_opened')
     && !cell.classList.contains('field__cell_marked')) {
       cell.classList.add('field__cell_opened');
@@ -422,6 +439,7 @@ function createField(level = DIFFICULT.easy) {
       cellStyle.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
       cellStyle.style.backgroundColor = '#47341e';
       showBombs();
+      playSound(looseSound, mute);
     }
   }
   // init steps counter
@@ -495,6 +513,7 @@ function startNewCustomGame() {
       }
     }
   }
+  playSound(newGameSound, mute);
 }
 
 function startNewGame() {
@@ -517,3 +536,14 @@ levelSelector.addEventListener('change', startNewGame);
 
 const newGameButton = document.querySelector('.control-panel__new-game-button');
 newGameButton.addEventListener('click', startNewGame);
+
+const muteButton = document.querySelector('.control-panel__sound-button');
+muteButton.addEventListener('click', () => {
+  if (mute === false) {
+    mute = true;
+    muteButton.style.backgroundImage = 'url(/minesweeper/assets/img/png/no-sound.png)';
+  } else {
+    mute = false;
+    muteButton.style.backgroundImage = 'url(/minesweeper/assets/img/png/sound.png)';
+  }
+});

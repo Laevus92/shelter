@@ -176,7 +176,7 @@ body {
   transition: 0.6s ease-in-out;
 }
 .control-panel__sound-button:hover {
-  transform: rotate3d(0, 1, 0, 360deg);
+  transform: rotate3d(0, 1, 0, 180deg);
 }
 .control-panel__new-game-button {
   background-image: url(/minesweeper/assets/img/png/reload.png);
@@ -200,7 +200,7 @@ body {
   transition: 0.6s ease-in-out;
 }
 .control-panel__record-button:hover {
-  transform: rotate3d(0, 1, 0, 360deg);
+  transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .level {
