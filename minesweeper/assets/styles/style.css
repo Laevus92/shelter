@@ -215,11 +215,13 @@ body {
   background: none;
   outline: none;
   text-align: center;
+  cursor: pointer;
 }
 .level__item {
   font-family: "Righteous", cursive;
   font-size: 30px;
   color: black;
+  cursor: pointer;
 }
 .level__input-width {
   width: 85%;
@@ -259,6 +261,7 @@ body {
   outline: none;
   border-radius: 10px;
   visibility: hidden;
+  cursor: pointer;
 }
 .level__button_active {
   visibility: visible;
@@ -334,6 +337,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 0 10px #1c1b1b;
+  cursor: pointer;
 }
 .field__cell_opened {
   background-image: url(/minesweeper/assets/img/jpg/ground.jpg);

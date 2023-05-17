@@ -215,29 +215,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-		// .level__img
-
-		&__img {
-      background-image: url(/minesweeper/assets/img/png/hard.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 100px;
-      height: 100px;
-      @media (width < 815px) {
+  
+  // .level__img
+  
+  &__img {
+     background-image: url(/minesweeper/assets/img/png/hard.png);
+     background-size: contain;
+     background-repeat: no-repeat;
+     width: 100px;
+     height: 100px;
+     @media (width < 815px) {
         display: none;
       }
-		}
-
-		// .level__selector
-
-		&__selector {
+   }
+   
+   // .level__selector
+   
+   &__selector {
       font-family: "Righteous", cursive;
       font-size: 30px;
       color: white;
       background: none;
       outline: none;
       text-align: center;
+      cursor: pointer;
 		}
 
 		// .level__item
@@ -246,6 +247,7 @@ body {
       font-family: 'Righteous', cursive;
       font-size: 30px;
       color: black;
+      cursor: pointer;
 		}
 
       &__input-width {
@@ -288,6 +290,7 @@ body {
          outline: none;
          border-radius: 10px;
          visibility: hidden;
+         cursor: pointer;
          &_active {
             visibility: visible;
          }
@@ -366,6 +369,8 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
+      text-shadow: 0 0 10px #1c1b1b;
+      cursor: pointer;
 			// .field__cell_opened
 
 			&_opened {

@@ -127,97 +127,97 @@ let stepCounter = 0;
 let timerId;
 let timeCounter = 0;
 let timerRunning = false;
+let isWinID = '';
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+let indexesBombs = [];
+let cellsWithoutBomb = [];
+let cellsWithBomb = [];
+
 function createMatrix(level = DIFFICULT.easy) {
-  const array = [];
-  const indexesBombs = [];
-  const [cellsQuantitty, bombsQuantity] = level;
-  const matrixWidth = Math.sqrt(cellsQuantitty);
+  indexesBombs = [];
+  const [cellsQuantity, bombsQuantity] = level;
+  const matrixWidth = Math.sqrt(cellsQuantity);
   const matrixHeight = matrixWidth;
+  const matrix = [];
+  for (let i = 0; i < matrixHeight; i += 1) {
+    const string = [];
+    for (let j = 0; j < matrixWidth; j += 1) {
+      string.push(0);
+    }
+    matrix.push(string);
+  }
 
   for (let i = 0; i < bombsQuantity; i += 1) {
-    let number = getRandomNumber(0, cellsQuantitty);
-    if (!indexesBombs.includes(number)) {
-      indexesBombs.push(number);
-    } else {
-      while (indexesBombs.includes(number)) {
-        number = getRandomNumber(0, cellsQuantitty);
+    let columnNumber = getRandomNumber(0, matrixHeight);
+    let stringNumber = getRandomNumber(0, matrixWidth);
+    if (matrix[stringNumber][columnNumber] === 'B') {
+      while (matrix[stringNumber][columnNumber] === 'B') {
+        columnNumber = getRandomNumber(0, matrixHeight);
+        stringNumber = getRandomNumber(0, matrixWidth);
       }
-      indexesBombs.push(number);
     }
-  }
-  for (let i = 0; i < cellsQuantitty; i += 1) {
-    if (indexesBombs.includes(i)) {
-      array.push('B');
-    } else {
-      array.push(0);
-    }
-  }
-  const matrix = [];
-  for (let i = 0; i < array.length; i += matrixWidth) {
-    matrix.push(array.slice(i, i + matrixWidth));
+    matrix[stringNumber][columnNumber] = 'B';
+    indexesBombs.push(stringNumber * matrixWidth + columnNumber);
   }
 
-  for (let i = 0; i < matrixHeight; i += 1) {
-    for (let j = 0; j < matrixWidth; j += 1) {
-      if (matrix[i][j] === 'B') {
-        if (matrix[i][j - 1] !== undefined) {
-          if (matrix[i][j - 1] !== 'B') {
-            matrix[i][j - 1] += 1;
+  matrix.forEach((subArray, axisY) => {
+    subArray.forEach((element, axisX) => {
+      if (element === 'B') {
+        if (axisX > 0) {
+          if (subArray[axisX - 1] !== 'B') {
+            subArray[axisX - 1] += 1;
           }
         }
-        if (matrix[i][j + 1] !== undefined) {
-          if (matrix[i][j + 1] !== 'B') {
-            matrix[i][j + 1] += 1;
+        if (axisX < matrixWidth - 1) {
+          if (subArray[axisX + 1] !== 'B') {
+            subArray[axisX + 1] += 1;
           }
         }
-        if (matrix[i - 1] !== undefined) {
-          if (matrix[i - 1][j] !== undefined) {
-            if (matrix[i - 1][j] !== 'B') {
-              matrix[i - 1][j] += 1;
+        if (axisY > 0) {
+          if (matrix[axisY - 1][axisX] !== 'B') {
+            matrix[axisY - 1][axisX] += 1;
+          }
+          if (axisX > 0) {
+            if (matrix[axisY - 1][axisX - 1] !== 'B') {
+              matrix[axisY - 1][axisX - 1] += 1;
+            }
+          }
+          if (axisX < matrixWidth - 1) {
+            if (matrix[axisY - 1][axisX + 1] !== 'B') {
+              matrix[axisY - 1][axisX + 1] += 1;
             }
           }
         }
-        if (matrix[i - 1] !== undefined) {
-          if (matrix[i - 1][j - 1] !== undefined) {
-            if (matrix[i - 1][j - 1] !== 'B') {
-              matrix[i - 1][j - 1] += 1;
+        if (axisY < matrixHeight - 1) {
+          if (matrix[axisY + 1][axisX] !== 'B') {
+            matrix[axisY + 1][axisX] += 1;
+          }
+          if (axisX > 0) {
+            if (matrix[axisY + 1][axisX - 1] !== 'B') {
+              matrix[axisY + 1][axisX - 1] += 1;
             }
           }
-        }
-        if (matrix[i - 1] !== undefined) {
-          if (matrix[i - 1][j + 1] !== undefined) {
-            if (matrix[i - 1][j + 1] !== 'B') {
-              matrix[i - 1][j + 1] += 1;
-            }
-          }
-        }
-        if (matrix[i + 1] !== undefined) {
-          if (matrix[i + 1][j] !== undefined) {
-            if (matrix[i + 1][j] !== 'B') {
-              matrix[i + 1][j] += 1;
-            }
-          }
-        }
-        if (matrix[i + 1] !== undefined) {
-          if (matrix[i + 1][j - 1] !== undefined) {
-            if (matrix[i + 1][j - 1] !== 'B') {
-              matrix[i + 1][j - 1] += 1;
-            }
-          }
-        }
-        if (matrix[i + 1] !== undefined) {
-          if (matrix[i + 1][j + 1] !== undefined) {
-            if (matrix[i + 1][j + 1] !== 'B') {
-              matrix[i + 1][j + 1] += 1;
+          if (axisX < matrixWidth - 1) {
+            if (matrix[axisY + 1][axisX + 1] !== 'B') {
+              matrix[axisY + 1][axisX + 1] += 1;
             }
           }
         }
       }
+    });
+  });
+  const cells = document.querySelectorAll('.field__cell');
+  cellsWithBomb = [];
+  cellsWithoutBomb = [];
+  for (let i = 0; i < cellsQuantity; i += 1) {
+    if (!indexesBombs.includes(Array.from(cells).indexOf(cells[i]))) {
+      cellsWithoutBomb.push(cells[i]);
+    } else {
+      cellsWithBomb.push(cells[i]);
     }
   }
   console.log(matrix);
@@ -257,10 +257,43 @@ function stopTimer() {
   timerRunning = false;
 }
 
+function switchNumberColor(element) {
+  const styleElement = element.style;
+  switch (element.textContent) {
+    case '1':
+      styleElement.color = '#3F51B5';
+      break;
+    case '2':
+      styleElement.color = '#4CAF50';
+      break;
+    case '3':
+      styleElement.color = '#F44336';
+      break;
+    case '4':
+      styleElement.color = '#FFEB3B';
+      break;
+    case '5':
+      styleElement.color = '#9C27B0';
+      break;
+    case '6':
+      styleElement.color = '#00BCD4';
+      break;
+    case '7':
+      styleElement.color = '#FFFFFF';
+      break;
+    case '8':
+      styleElement.color = '#000000';
+      break;
+    default:
+      styleElement.color = '#000000';
+      break;
+  }
+}
+
 function createField(level = DIFFICULT.easy) {
-  const [cellsQuantitty, bombsQuantity] = level;
-  const fieldWith = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
-  const fieldHeight = Math.sqrt(cellsQuantitty) * (40 * (100 / 1280));
+  const [cellsQuantity, bombsQuantity] = level;
+  const fieldWith = Math.sqrt(cellsQuantity) * (40 * (100 / 1280));
+  const fieldHeight = Math.sqrt(cellsQuantity) * (40 * (100 / 1280));
   let field = document.createElement('div');
   field.className = 'field';
   field.style.width = `${fieldWith}vw`;
@@ -279,23 +312,64 @@ function createField(level = DIFFICULT.easy) {
   tableSubtitle.classList = 'field__table-subtitle';
   resultTable.appendChild(tableSubtitle);
   tableSubtitle = document.querySelector('.field__table-subtitle');
-  const tableButton = document.createElement('button');
+  let tableButton = document.createElement('button');
   tableButton.classList = 'field__table-button';
   tableButton.textContent = 'Try again!';
   resultTable.appendChild(tableButton);
+  tableButton = document.querySelector('.field__table-button');
   document.querySelector('.mines__quanuty').textContent = bombsQuantity;
-  for (let i = 0; i < cellsQuantitty; i += 1) {
+  for (let i = 0; i < cellsQuantity; i += 1) {
     const randomCell = document.createElement('div');
     randomCell.className = 'field__cell';
-    randomCell.style.width = `${100 / (Math.sqrt(cellsQuantitty))}%`;
-    randomCell.style.height = `${100 / (Math.sqrt(cellsQuantitty))}%`;
+    randomCell.style.width = `${100 / (Math.sqrt(cellsQuantity))}%`;
+    randomCell.style.height = `${100 / (Math.sqrt(cellsQuantity))}%`;
     field.appendChild(randomCell);
   }
   const cells = document.querySelectorAll('.field__cell');
   let matrix = createMatrix(level);
+
+  // eslint-disable-next-line no-use-before-define
+  isWinID = setInterval(isWin, 500);
+
+  function showBombs() {
+    cells.forEach((cell) => {
+      const cellStyle = cell;
+      const allStringNumber = Math.floor(Array.from(cells).indexOf(cell)
+      / Math.sqrt(cellsQuantity));
+      const allColumnNumber = Array.from(cells).indexOf(cell)
+      - (Math.sqrt(cellsQuantity) * allStringNumber);
+
+      if (matrix[allStringNumber][allColumnNumber] === 'B') {
+        cellStyle.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
+        cellStyle.style.backgroundColor = '#47341e';
+      }
+
+      cell.classList.add('field__cell_opened');
+      cell.classList.remove('field__cell_marked');
+      cell.removeEventListener('click', countStep);
+
+      if (matrix[allStringNumber][allColumnNumber] !== 'B' && matrix[allStringNumber][allColumnNumber] !== 0) {
+        cellStyle.textContent = matrix[allStringNumber][allColumnNumber];
+        switchNumberColor(cell);
+      }
+    });
+  }
+
+  function isWin() {
+    if (cellsWithoutBomb.every((element) => element.classList.contains('field__cell_opened'))
+    && cellsWithBomb.every((element) => !element.classList.contains('field__cell_opened'))) {
+      stopTimer();
+      resultTable.classList.add('field__result-table_active');
+      tableTitle.textContent = 'YOU WIN!';
+      tableSubtitle.textContent = `time: ${document.querySelector('.timer__time-value').textContent} steps: ${document.querySelector('.steps__quanuty').textContent}`;
+      clearInterval(isWinID);
+      showBombs();
+    }
+  }
   function markCell(cell) {
     let flagsCount = Number.parseInt(document.querySelector('.mines__quanuty').textContent, 10);
-    if (flagsCount > 0 && !cell.classList.contains('field__cell_marked')) {
+    if (flagsCount > 0 && !cell.classList.contains('field__cell_marked')
+    && !cell.classList.contains('field__cell_opened')) {
       cell.classList.add('field__cell_marked');
       flagsCount -= 1;
       document.querySelector('.mines__quanuty').textContent = flagsCount;
@@ -306,9 +380,10 @@ function createField(level = DIFFICULT.easy) {
     }
   }
   function checkCell(cell) {
-    const stringNumber = Math.floor(Array.from(cells).indexOf(cell) / Math.sqrt(cellsQuantitty));
+    const cellStyle = cell;
+    const stringNumber = Math.floor(Array.from(cells).indexOf(cell) / Math.sqrt(cellsQuantity));
     const columnNumber = Array.from(cells).indexOf(cell)
-    - (Math.sqrt(cellsQuantitty) * stringNumber);
+    - (Math.sqrt(cellsQuantity) * stringNumber);
     startTimer();
     if (Array.from(cells).every((element) => !element.classList.contains('field__cell_opened'))
     && !cell.classList.contains('field__cell_marked')) {
@@ -319,50 +394,34 @@ function createField(level = DIFFICULT.easy) {
     if (matrix[stringNumber][columnNumber] !== 0 && matrix[stringNumber][columnNumber]
       !== 'B' && matrix[stringNumber][columnNumber] !== undefined && !cell.classList.contains('field__cell_marked')) {
       cell.classList.add('field__cell_opened');
-      cell.textContent = matrix[stringNumber][columnNumber];
+      cellStyle.textContent = matrix[stringNumber][columnNumber];
+      switchNumberColor(cell);
     } else if (matrix[stringNumber][columnNumber] === 0 && !cell.classList.contains('field__cell_opened')
     && !cell.classList.contains('field__cell_marked')) {
       cell.classList.add('field__cell_opened');
       if (columnNumber > 0) {
         checkCell(cells[Array.from(cells).indexOf(cell) - 1]);
       }
-      if (columnNumber < Math.sqrt(cellsQuantitty) - 1) {
+      if (columnNumber < Math.sqrt(cellsQuantity) - 1) {
         checkCell(cells[Array.from(cells).indexOf(cell) + 1]);
       }
       if (stringNumber > 0) {
-        checkCell(cells[Array.from(cells).indexOf(cell) - Math.sqrt(cellsQuantitty)]);
+        checkCell(cells[Array.from(cells).indexOf(cell) - Math.sqrt(cellsQuantity)]);
       }
-      if (stringNumber < Math.sqrt(cellsQuantitty) - 1) {
-        checkCell(cells[Array.from(cells).indexOf(cell) + Math.sqrt(cellsQuantitty)]);
+      if (stringNumber < Math.sqrt(cellsQuantity) - 1) {
+        checkCell(cells[Array.from(cells).indexOf(cell) + Math.sqrt(cellsQuantity)]);
       }
     } else if (matrix[stringNumber][columnNumber] === 'B' && !cell.classList.contains('field__cell_marked')) {
       stopTimer();
+      clearInterval(isWinID);
       resultTable.classList.add('field__result-table_active');
-      tableTitle.textContent =  'YOU LOOSE!';
-      tableSubtitle.textContent = `time: ${document.querySelector('.timer__time-value').textContent} steps: ${document.querySelector('.steps__quanuty').textContent}`
+      tableTitle.textContent = 'YOU LOOSE!';
+      tableSubtitle.textContent = `time: ${document.querySelector('.timer__time-value').textContent} steps: ${document.querySelector('.steps__quanuty').textContent}`;
       document.querySelector('.players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/rip.png)';
       cell.classList.add('field__cell_opened');
-      cell.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
-      cell.style.backgroundColor = '#47341e';
-      cells.forEach((allCell) => {
-        const allStringNumber = Math.floor(Array.from(cells).indexOf(allCell)
-        / Math.sqrt(cellsQuantitty));
-        const allColumnNumber = Array.from(cells).indexOf(allCell)
-        - (Math.sqrt(cellsQuantitty) * allStringNumber);
-
-        if (matrix[allStringNumber][allColumnNumber] === 'B') {
-          allCell.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
-          allCell.style.backgroundColor = '#47341e';
-        }
-
-        allCell.classList.add('field__cell_opened');
-        allCell.classList.remove('field__cell_marked');
-        allCell.removeEventListener('click', countStep);
-
-        if (matrix[allStringNumber][allColumnNumber] !== 'B' && matrix[allStringNumber][allColumnNumber] !== 0) {
-          allCell.textContent = matrix[allStringNumber][allColumnNumber];
-        }
-      });
+      cellStyle.style.backgroundImage = 'url(/minesweeper/assets/img/png/bomb.png)';
+      cellStyle.style.backgroundColor = '#47341e';
+      showBombs();
     }
   }
   // init steps counter
@@ -375,7 +434,11 @@ function createField(level = DIFFICULT.easy) {
   cells.forEach((cell) => {
     cell.addEventListener('click', (event) => {
       checkCell(event.target);
+      isWin();
     });
+
+    // eslint-disable-next-line no-use-before-define
+    tableButton.addEventListener('click', startNewGame);
   });
 
   cells.forEach((cell) => {
@@ -389,11 +452,12 @@ function createField(level = DIFFICULT.easy) {
 createField();
 
 const levelSelector = document.querySelector('.level__selector');
-levelSelector.addEventListener('change', () => {
-  let field = document.querySelector('.field');
+
+function startNewCustomGame() {
   const inputWidth = document.querySelector('.level__input-width');
   const inputMines = document.querySelector('.level__input-mines');
   const okButton = document.querySelector('.level__button');
+  let field = document.querySelector('.field');
   if (levelSelector.value !== 'custom') {
     inputWidth.classList.remove('level__input-width_active');
     inputMines.classList.remove('level__input-mines_active');
@@ -408,24 +472,48 @@ levelSelector.addEventListener('change', () => {
     inputWidth.classList.add('level__input-width_active');
     inputMines.classList.add('level__input-mines_active');
     okButton.classList.add('level__button_active');
-    field.remove();
-    okButton.addEventListener('click', () => {
-      if (inputWidth.value !== '' && inputMines.value !== '') {
-        if ((inputWidth.value > 9 && inputWidth.value < 26)
-        && (inputMines.value > 9 && inputMines.value < 100)) {
-          field = document.querySelector('.field');
-          DIFFICULT.custom = [inputWidth.value ** 2, parseInt(inputMines.value, 10)];
-          if ((field) === null) {
-            createField(DIFFICULT[levelSelector.value]);
-          } else {
-            field.remove();
-            createField(DIFFICULT[levelSelector.value]);
-          }
+    if ((field) === null) {
+      createField(DIFFICULT[levelSelector.value]);
+    } else {
+      field.remove();
+      createField(DIFFICULT[levelSelector.value]);
+    }
+    if (inputWidth.value !== '' && inputMines.value !== '') {
+      if ((inputWidth.value > 9 && inputWidth.value < 26)
+      && (inputMines.value > 9 && inputMines.value < 100)) {
+        field = document.querySelector('.field');
+        DIFFICULT.custom = [inputWidth.value ** 2, parseInt(inputMines.value, 10)];
+        if ((field) === null) {
+          createField(DIFFICULT[levelSelector.value]);
         } else {
-          // eslint-disable-next-line no-alert
-          alert('Ширина поля должна быть от 10 до 25!\nКоличество мин должно быть от 10 до 99!');
+          field.remove();
+          createField(DIFFICULT[levelSelector.value]);
         }
+      } else {
+        // eslint-disable-next-line no-alert
+        alert('Ширина поля должна быть от 10 до 25!\nКоличество мин должно быть от 10 до 99!');
       }
-    });
+    }
   }
-});
+}
+
+function startNewGame() {
+  clearInterval(isWinID);
+  stopTimer();
+  stepCounter = 0;
+  timeCounter = 0;
+  document.querySelector('.players-statistic__avatar').style.backgroundImage = 'url(/minesweeper/assets/img/png/soldier.png)';
+  timeValue.textContent = '00:00';
+  stepsQuantity.textContent = '000';
+  // const field = document.querySelector('.field');
+  // const inputWidth = document.querySelector('.level__input-width');
+  // const inputMines = document.querySelector('.level__input-mines');
+  const okButton = document.querySelector('.level__button');
+  startNewCustomGame();
+  okButton.addEventListener('click', startNewCustomGame);
+}
+
+levelSelector.addEventListener('change', startNewGame);
+
+const newGameButton = document.querySelector('.control-panel__new-game-button');
+newGameButton.addEventListener('click', startNewGame);
